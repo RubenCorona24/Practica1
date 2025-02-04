@@ -60,3 +60,7 @@ elif opcion == 3:
     else:
         print("no se conoce el color")
           
+
+    #Opcion no válida
+else:
+    print("Opción no válida")
