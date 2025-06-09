@@ -107,16 +107,6 @@ def num_cuadrado(num):
 resultado = num_cuadrado(9)
 print(f"el resultado es {resultado}")
 
-def contrastar(num1,num2):
-    if num1 == num2:
-        return "Ambos números son iguales"
-    elif num1 > num2:
-        return f"{num1} es mayor que {num2}"
-    elif num1 < num2:
-        return f"{num1} es menor que {num2}"
-from random import *
-num1 = randint(1,21)
-num2 = randint(1,21)
-print(contrastar(num1,num2))
+
 
 
