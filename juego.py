@@ -41,5 +41,5 @@ Jugador1 = Jugador('Andy',18)
 depredador = Depredador('Lobo','Garras filosas',180)
 print(Jugador1)
 print(depredador)
-
+#Este es un nuevo comentario desde GitHub
 
