@@ -2,6 +2,8 @@ import pygame
 import random
 import math
 from pygame import mixer
+import io
+
 
 #Inicializar pygame
 pygame.init()
@@ -48,14 +50,21 @@ bala_x_cambio = 0
 bala_y_cambio = 1
 bala_visible = False
 
+
+
+def fuentes_bytes(fuente):
+    with open(fuente,'rb') as f:
+        ttf_bytes = f.read()
+    return io.BytesIO(ttf_bytes)
+
 #puntaje
 puntaje = 0
-fuente = pygame.font.Font('freesansbold.ttf',32)
-texto_x = 10
+fuente_como_bytes = fuentes_bytes("FreeSansBold.ttf")
+fuente = pygame.font.Font(fuente_como_bytes,32)
+texto_x = 10    
 texto_y = 10
-
 #texto final
-fuente_final = pygame.font.Font('freesansbold.ttf',40)
+fuente_final = pygame.font.Font(fuente_como_bytes,40)
 def texto_final():
     mi_fuente_final = fuente_final.render("JUEGO TERMINADO",True,(100,150,150))
     pantalla.blit(mi_fuente_final,(60,200))
