@@ -42,4 +42,15 @@ depredador = Depredador('Lobo','Garras filosas',180)
 print(Jugador1)
 print(depredador)
 #Este es un nuevo comentario desde GitHub
+#Ahora tambiene es este otro cambio
 
+lugares = ['bosque','lago','oceano','casa','barco','aereopuerto']
+mapa = choice(lugares)
+historia = f'erase una vez un niño llamado {Jugador1} que se encontraba en un/a {mapa} abandonado'
+class Narrador:
+    def narrar(self):
+        return historia
+    
+narrador1 = Narrador()
+
+print(narrador1.narrar())
