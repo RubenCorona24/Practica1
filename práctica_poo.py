@@ -42,3 +42,34 @@ class Human(SerVivo):
 human1 = Human(14, 'Sam', '160cm')
 human1.presentarse()
 print(human1)
+
+human2 = Human(21,'Ralff','175cm')
+human2.presentarse()
+
+def comprobar_edad(edad):
+    if edad <18:
+        print(f"Is younger, has {edad} years old")
+    elif edad >= 18:
+        print(f"Is an adult, has {edad} years old")
+    elif edad >= 50:
+        print(f"Is old, has {edad} years old")
+
+comprobar_edad(human1.age)
+
+comprobar_edad(human2.age)
+
+
+try:
+    new_name = input("Enter a name for a new character: ")
+    age = int(input("Years of the new character: "))
+    height = input("Height of the new character: ")
+    new_character = Human(age,new_name,height)
+except:
+    print("Something has failed")
+
+else:
+    new_character.presentarse()
+    print("Succesfull process")
+finally:
+    print("End of the new character")
+
