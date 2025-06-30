@@ -73,3 +73,26 @@ else:
 finally:
     print("End of the new character")
 
+
+import datetime
+from random import *
+year = randint(2000,2201)
+month = randint(1,13)
+if month == 2:
+    day = randint(1,29)
+elif month== 4 or 6 or 9 or 11:
+    day = randint(1,31)
+else:
+    day = randint(1,32)
+
+
+date = datetime.date(year,month,day)
+print(f"Today is {date}")
+
+
+
+
+
+
+    
+
