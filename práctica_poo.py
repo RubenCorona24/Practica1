@@ -76,19 +76,33 @@ finally:
 
 import datetime
 from random import *
-year = randint(2000,2201)
-month = randint(1,13)
-if month == 2:
-    day = randint(1,29)
-elif month== 4 or 6 or 9 or 11:
-    day = randint(1,31)
-else:
-    day = randint(1,32)
+#year = randint(2000,2201)
+#month = randint(1,13)
+#if month == 2:
+ #   day = randint(1,29)
+#elif month== 4 or 6 or 9 or 11:
+ #   day = randint(1,31)
+#else:
+ #   day = randint(1,32)
 
 
-date = datetime.date(year,month,day)
-print(f"Today is {date}")
+#date = datetime.date(year,month,day)
+#print(f"Today is {date}")
 
+import os
+#Abrir archivos
+route = os.getcwd()
+print(f"My route is: {route}")
+os.chdir("C:\\Users\\coron\\OneDrive\\Escritorio\\Alternativo")
+file = open('otro_archivo.txt','r')
+arch = file.read()
+try:
+    print(arch)
+except:
+    print("FileNotFound")
+finally:
+    print("End of the Process")
+    
 
 
 
