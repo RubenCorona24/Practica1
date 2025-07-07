@@ -83,7 +83,8 @@ while vidas >  0 and vidas_contra > 0:
         print("---El jugador ha ganado---")
 
 from datetime import *
-
+#todo esto es un ejercicio de prueba, con el fin de mejorar los conocimientos de poo
+#características: jugadores,funciones, entre otras
 
 def pedir_nombre():
     name = input("Hello, what is your name?: ")
