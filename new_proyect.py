@@ -82,5 +82,58 @@ while vidas >  0 and vidas_contra > 0:
     elif vidas_contra == 0:
         print("---El jugador ha ganado---")
 
+from datetime import *
+
+
+def pedir_nombre():
+    name = input("Hello, what is your name?: ")
+    return name
+
+
+name = pedir_nombre()
+age = int(input("Enter your ages: "))
+
+
+class Jugador:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def __str__(self):
+        return f"Tu te llamas {self.name}, tienes {self.age} años"
+
+    def jugando(self):
+        print(f"Jugador {self.name} está jugando")
+
+
+jugador1 = Jugador(name, age)
+
+
+def inicio():
+    try:
+        print("Welcome to this tematic of Python")
+        print(jugador1)
+        if jugador1.age >= 18:
+            print("You are a man")
+            eleccion = input("What would you like to drink? (beef/wine): ")
+            if eleccion not in ['beef','wine']:
+                print("That isn't available here")
+            else:
+                print(f"Good, your have chosen {eleccion}")
+
+        else:
+            print("You are a child yet, you can´t have any drink")
+    except:
+        print("something has gone wrong")
+
+    finally:
+        print(f"Thanks for your choice {jugador1.name}")
+
+
+inicio()
+
+
+    
+
 
 
