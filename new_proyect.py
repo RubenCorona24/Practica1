@@ -124,6 +124,13 @@ def inicio():
 
         else:
             print("You are a child yet, you can´t have any drink")
+            school = input("Which is your school?: ")
+            if school.isnumeric():
+                print("Invalid")
+            grade = input("Grade: ")
+            print(f"Okay {jugador1.name}, you are {jugador1.age} years old and your school called {school}, grade {grade}")
+
+
     except:
         print("something has gone wrong")
 
