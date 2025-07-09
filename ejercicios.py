@@ -49,6 +49,8 @@ class Empleado:
         
     def mostrar_info(self):
         return f"La persona se llama {self.name}, tiene un salario de {self.salary}mxm mensuales"
+    def cobrar(self):
+        print(f"El trabajador {self.name} cobra {self.salary}mxm")
 class Gerente(Empleado):
     def __init__(self, name, salary,department):
         super().__init__(name, salary)
@@ -60,4 +62,9 @@ empleado1 = Empleado('Ricardo',1900)
 gerente = Gerente('Francisco',2900,'Ciencias Sociales')
 print(empleado1.mostrar_info())
 print(gerente.mostrar_info())
+
+empleado2 = Empleado('Jonathan',1830)
+empleado3 = Empleado('Kenneth',1730)
+empleado3.cobrar()
+gerente.cobrar()
 
