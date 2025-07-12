@@ -63,35 +63,33 @@ class Object(ABC):
     def pararse(self):
         pass
 
-
-class Nissan(Object):
+class Nissan(object):
     def __init__(self, año, velocidad):
         self.año = año
         self.velocidad = velocidad
-
-    def moverse(self):
-        print(f"El Nissan se mueve a unos {self.velocidad}km por hora")
-        nuevo_mov = int(input("Velocidad aumentada: "))
-        new_v = self.velocidad + nuevo_mov
-        print(f"Ahora se mueve a {new_v}km/hora")
 
     def prender_luz(self):
         print("Luces prendidas de Nissan")
 
     def pararse(self):
         self.velocidad = 0
-        print(f"Nissan en reposo con {self.velocidad}km por hora")
+        print(f"Nissan en reposo con {self.velocidad} km por hora")
+
+    def moverse(self):
+        print(f"El auto Nissan se está moviendo a {self.velocidad} km/h")
 
     def __str__(self):
-        return f"Automovil Nissan del año {self.año}, va a una velocidad de {self.velocidad}km/hora"
+        return f"Automóvil Nissan del año {self.año}, va a una velocidad de {self.velocidad} km/hora"
 
-
+# Código de prueba
 carro = Nissan(2009, 14)
 print(carro)
 carro.pararse()
 carro.moverse()
-carro2 = Nissan(2009,29)
+
+carro2 = Nissan(2009, 29)
 print(carro2)
+
 
 
         

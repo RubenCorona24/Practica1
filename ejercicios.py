@@ -68,3 +68,9 @@ empleado3 = Empleado('Kenneth',1730)
 empleado3.cobrar()
 gerente.cobrar()
 
+if gerente.cobrar() >=10:
+    print("El gerente cobra mucho")
+else:
+    print("El gerente cobra la suficiente cantidad")
+def nombrar_cosas():
+    cosa = int(input())
