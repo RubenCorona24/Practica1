@@ -89,9 +89,87 @@ carro.moverse()
 
 carro2 = Nissan(2009, 29)
 print(carro2)
+from random import *
+
+num = randint(1,100)
+if num%2 == 0:
+    print(f"{num} es par")
+else:
+    print(f"{num} es impar")
+from datetime import*
+class Caricatura:
+    def __init__(self,titulo,año,creador):
+        self.año = año
+        self.creador = creador
+        self.titulo = titulo
+
+    def presentar(self):
+        return f"La caricatura {self.titulo} fue creada por {self.creador} en el año {self.año}"
+class Trabajo:
+    def __init__(self,empresa,posición):
+        self.empresa =empresa
+        self.posicion = posición
+    def presentar(self):
+        return f"Trabajas en una insitusión llamada {self.empresa} como {self.posicion}"
+try:
+    edad = int(input("Selecciona tu edad: "))
+    if edad in range(1,12):
+        print("Eres un niño todavía")
+        caritcatura = input("Cuál es la caricatura que más ves?: ")
+        fecha = input(f"Recuerdas en que fecha se estrenó {caritcatura}?(si/no): ")
+        if fecha == 'si':
+            date = int(input("Vale, introduce la fecha de estreno: "))
+        elif fecha == 'no':
+            print("No te preocupes, le asignamos una fecha")
+            year = randint(1900,2025)
+            month = randint(1,13)
+            day = randint(1,31)
+            date = date(year,month,day)
+            print(f"La fecha de estreno fue: {date}")
+        else:
+            year = randint(1900,2025)
+            month = randint(1,13)
+            day = randint(1,31)
+            date = date(year,month,day)
+            print(f"No introduciste una respuesta clara, pero le asignamos una fecha:{date} vale ")
+        autor = input("Quien fue el autor de tu caricatura?: ")
+        caricatura = Caricatura(caritcatura,date,autor)
+        print(F"Vale, tenemos los datos de tu caricatura: {caricatura.presentar()}")
 
 
 
-        
+    elif edad in range(12,18):
+        print("Eres un adolescente")
+        videojuego = input("Tienes algún videojuego favorito?(no/si): ")
+        if videojuego == 'si':
+            favorito = input("Vale, cual es tu videojuego favorito?: ")
+            print(f"Que bien, tienes buenos gustos al interesarte en {favorito}")
+        elif videojuego == 'no':
+            print("No pasa nada, a veces uno se divierte más con libros o canciones")
+        else:
+            print("Mmm no entendí el mensaje, pero está bien supongo jajaja")
+    elif edad in range(18,45):
+        print("Eres un adulto")
+        trabajo = input("En este momento tienes un trabajo establecido?(si/no): ")
+        if trabajo == 'si':
+            job = input("Genial, como se llama la empresa donde trabahas?: ")
+            posiiton = input(f"Cuál es tu puesto en la empresa {job}?: ")
+            tu_trabajo = Trabajo(job,posiiton)
+            print(F"Vale, te voy a decir tus datos como trabajador: {tu_trabajo.presentar()}")
+        elif trabajo == 'no':
+            print("No te preocupes, cualquier día es una nueva oportunidad")
+    else:
+        print("Eres ya un anciano")
+        travel = input("Te gustaría viajar en un lugar en especial?(si/no): ")
+        if travel =='si':
+            lugar = input("Dónde te gustaría viajar?: ")
+            print(f"Muy bien, a mi también me gustaría viajar a {lugar}!!")
+        elif travel == 'no':
+            print("Está bien, a veces es mejor quedarse en casa!!")   
+
+except:
+    print("Algo ha salido mal")
+finally:
+    print("Proceso finalizado, gracias")        
         
 
