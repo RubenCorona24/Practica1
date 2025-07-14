@@ -50,6 +50,38 @@ def eliminar_nota():
     else:
         print("FileNotFound")
     print("El archivo se ha eliminado")
+
+#función de contador de palabras
+def contador_palabras():
+    carpeta = Path('notas')
+    total_palabras = 0
+
+    for arch in carpeta.glob("*.txt"):
+        contenido = arch.read_text(encoding='utf-8')
+        palabras = contenido.split()
+        print(f"{arch.name}: {len(palabras)} palabras")
+        total_palabras += len(palabras)
+
+    print(f"En total el archivo: {arch.name} tiene {total_palabras} palabras")
+    
+#función de buscar palabra en una nota
+def buscar_palabra():
+    palabra= input("Escribe la palabra que deseas buscar: ").lower()
+    carpeta = Path('notas')
+    encontradas = []
+
+    for arch in carpeta.glob('*.txt'):
+        contenido = arch.read_text(encoding='utf-8').lower()
+        if palabra in contenido:
+            encontradas.append(arch.name)
+
+    if encontradas:
+        print("Palabras encontradas en estas notas: ")
+        for name in encontradas:
+            print(f"-{name}")
+    else:
+        print("No se encontró ningun archivo con esta palabra")
+
 #función de salir del programa
 def menu():
     while True:
@@ -58,7 +90,10 @@ def menu():
         print("2. Leer una nota")
         print("3. Listar notas")
         print("4. Eliminar una nota")
-        print("5. Salir")
+        print("5. Contar palabras")
+        print("6. Buscar palabra")
+        print("7. Salir")
+    
         opcion = input("Elige una opción (1-5): ")
 
         if opcion == '1':
@@ -74,13 +109,20 @@ def menu():
             print("***Has escogido la opción de eliminar una nota***")
             eliminar_nota()
         elif opcion == '5':
-            print("***Has escogido la opción de salir***")
-            print("Adiós, fue un gusyo apoyarte")
-            break
+            print("***Has escogido la opción de contar palabras***")
+            contador_palabras()
+        elif opcion == '6':
+            print("***Has elegido la opción de buscar palabra en notas")
+            buscar_palabra()
+        elif opcion == '7':
+            print("***Has elegido la opción de salir***")
+            print("Fue un gusto apoyarte, hasta pronto!!")
+            break    
+
         else:
             print("Opción no válida")
 
 menu()
 
+
     
-            
