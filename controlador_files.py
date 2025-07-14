@@ -25,17 +25,25 @@ archivo.close()
 
 #crear lista de tareas
 def lista_tareas():
-    eleccion = input("Desea añadir una nueva tarea al archivo?(si/no): ")
-    if eleccion == 'no':
-        files = open('tareas.txt','r')
-        notes = files.read()
-        print(notes)
-    elif eleccion == 'si':
-        new_work = input("Seleccione su nueva tarea: ")
-        files = open('tareas.txt','a')
-        notes = files.write(new_work)
-        print("Tarea agregada exitósamente")
+    while True:
+        eleccion = input("Desea añadir una nueva tarea al archivo?(si/no/ver/salir): ").lower()
+        if eleccion == 'no':
+            print("No se guardó ninguna tarea")
+        elif eleccion == 'si':
+            new_work = input("Seleccione su nueva tarea: ")
+            files = open('tareas.txt','a')
+            notes = files.write(f"- {new_work}\n")
+            print("Tarea agregada exitósamente")
+        elif eleccion == 'salir':
+            print("elegiste la opción de salir, hasta pronto!!!")
+            break
+        elif eleccion == 'ver':
+            archivo = open('tareas.txt','r')
+            readable = archivo.read()
+            print(f"Contenido del archivo: {readable}")
+
+        else:
+            print("Lo siento, por ahora no has introducido una opción clara") 
 
 lista_tareas()
-lista_tareas()
-lista_tareas()
+
