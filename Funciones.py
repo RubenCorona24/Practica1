@@ -107,6 +107,60 @@ def num_cuadrado(num):
 resultado = num_cuadrado(9)
 print(f"el resultado es {resultado}")
 
+#función de ofrecer cosas
+def ofrecer():
+    cosas = ['vaso de agua','rebanada de pastel','copa de vino','rebanada de pizza']
+    print(f"Ahorita lo que tenemos es: {cosas}")
+    eleccion = input("Que deseas?: ")
+    if 'vaso de agua' or 'agua' in eleccion:
+        print("Por supuesto, ya mismo te doy un vaso de agua")
+        fria_caliente = input("Lo quieres fría o tibia?: ")
+        if 'fría'or 'fria' in fria_caliente:
+            print("Dale, ya mismo un vaso de agua fria con hielos")
+        elif 'tibia' in fria_caliente:
+            print("Bien, entonces agua templada de la jarra")
+        else:
+            print("No entendí bien, pero te daré un vaso de agua tibia")
+    elif 'rebanada de pastel' or 'pastel' in eleccion:
+        print("Claro!!, ya mismo una tarta de pastel de chocolate si te apetece")
+    elif 'copa de vino' or 'vino' in eleccion:
+        vino = input("Si con gusto, el vino lo quieres tinto u oscura?: ")
+        if 'tinto' in vino:
+            print("Vale, ya mismo una copa de vino tinto para nuestro invitado")
+        else:
+            print("Vale, ya mismo una copa de vino oscura para nuestro invitado")
+    elif 'rebanada de pizza' or 'pizza' in eleccion:
+        pizza = input("Claro, tenemos de pepperoni o hawaiana: ")
+        if 'pepperoni' or 'peperoni' in pizza:
+            print("Dale, ahora te traigo una rebanada de pepperoni con gusto")
+        else:
+            print("Vale, ya mismo una rebanada de hawaiana con gusto")
+    else:
+        print("Lo sentimos, puedes ser más específico con tu pedido?")
+
+def despedir():
+    print("Adiós, que tengas buena suerte, y no olvides que aquí te recibimos a gusto.")
+
+
+#funcion dentro de otra función (decoradores)
+
+def devolver_saludo_despedida():
+    elec = input("Do you want to go?: ")
+    if elec == 'no' or 'not':
+        print("Great!!, one moment please")
+        ofrecer()
+    elif elec == 'si' or 'yes':
+        despedir()
+    else:
+        print("Lo siento, no pude entender tu mensaje")
+try:
+    devolver_saludo_despedida()
+except:
+    print("Sorry, what do you mean?")
+finally:
+    print("Finaliced process")
+
+
 
 
 
