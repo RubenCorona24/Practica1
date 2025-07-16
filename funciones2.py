@@ -53,6 +53,27 @@ personajes = ['Adolfo','Raul','Alonso']
 num = randint(1,101)
 lugar = choice(['laberinto','plaza','bosque'])
 print(F"Te toco personaje: {choice(personajes)} número: {num} lugar: {lugar}}")
+
+class Juego:
+    juego_prendido = False
+    puntos = 0
+    vidas = 5
+    def __init__(self,anio,creador,modo):
+        self.anio = anio
+        self.creador = creador
+        self.modo = modo
+    def iniciar_juego(self):
+        juego_prendido = True
+        print(f"Se ha iniciado el juego en el modo {self.modo}")
+    def ganar_puntos(self):
+        print("Has ganado un punto")
+        puntos += 1
+    def perder_vida(self):
+        print("Has perdido una vida)
+              vidas -= 1
+
+
+        
         
                    
    
