@@ -46,6 +46,13 @@ def num_cuadrados(*args):
       return [(arg**2) for arg in args]
 
 print(num_cuadrados(1,2,3))
+from random import *
+
+#Función de escoger un número, personaje y lugar
+personajes = ['Adolfo','Raul','Alonso']
+num = randint(1,101)
+lugar = choice(['laberinto','plaza','bosque'])
+print(F"Te toco personaje: {choice(personajes)} número: {num} lugar: {lugar}}")
         
                    
    
