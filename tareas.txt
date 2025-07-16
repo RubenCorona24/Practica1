@@ -1,0 +1,5 @@
+Esto es un archivo para guardar tus tareas
+- Leer 30 minutos
+- Estudiar inglés
+- Hacer ejercicio
+- practicar programación

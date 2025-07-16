@@ -69,8 +69,9 @@ class Juego:
         print("Has ganado un punto")
         puntos += 1
     def perder_vida(self):
-        print("Has perdido una vida)
-              vidas -= 1
+        print("Has perdido una vida")
+        vidas -= 1
+
 
 
         
