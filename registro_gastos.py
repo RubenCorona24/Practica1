@@ -1,11 +1,14 @@
+#IMPORTAR DE LA LIBRERÍA DATETIME (DATE)
 from datetime import date
 
 ARCHIVO = 'gastos.txt'
+#LIMPIAR EL ARCHIVO DE GASTOS.TXT
 open('gastos.txt', 'w').close()
+#FUNCIÓN Y ENTRAR EN LOOP DEL MENÚ DE OPCIONES
 def registrar_datos():
     while True:
         elección = input(
-            "\n📋 BIENVENIDO AL REGISTRO DE DATOS 📋\n"
+            "\n📋 BIENVENIDO AL REGISTRO DE GASTOS: seleccciona las opciones: 📋\n"
             "1.- AGREGAR UN GASTO, MONTO, CATEGORÍA, DESCRIPCIÓN\n"
             "2.- VER TODOS LOS GASTOS\n"
             "3.- VER TOTAL GASTADO\n"
@@ -67,5 +70,5 @@ def registrar_datos():
         else:
             print("❌ Opción no válida. Escribe 1, 2, 3 o 4.\n")
 
-# Ejecutar el programa
+# EJECUTAR EL PROGRAMA
 registrar_datos()
