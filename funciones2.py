@@ -94,7 +94,27 @@ class Jugador:
         print(F"Al personaje se le ha quitado {daño} de daño")
 personaje1 = Jugador('Kratos',1900,180)
 
+class Villano:
+    def __init__(self,name,health,power,velocidad):
+        self.name = name
+        self.health = health
+        self.power = power
+        self.velocidad = velocidad
+    def perder_vida(self,daño):
+        self.health -= daño
+        print(f"A {self.name} se le ha quitado {daño} de daño")
+    def __str__(self):
+        return f"Villano: {self.name} Health: {self.health} Power: {self.power}"
+    def atacar(self,daño_hecho):
+        print(f"{self.name} ha atacado con su habilidad de {self.power}, ha hecho {daño_hecho} de daño ")
+    def correr(self,speed):
+        self.velocidad += speed
+        print(F"Ahora el personaje corre más rápido, a {self.velocidad}km/hora")
+    def __del__(self):
+        print(f"El personaje ha muerto")
+mi_villano = Villano('Horteflus',1900,'Lanza fuegos',180)
 
+    
 
         
         
