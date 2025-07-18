@@ -71,6 +71,28 @@ class Juego:
     def perder_vida(self):
         print("Has perdido una vida")
         vidas -= 1
+    def __str__(self):
+        return f"Este juego fue creadoe en el año {self.anio} por {self.creador}, está ene el modo {self.modo}"
+    
+
+mi_juego = Juego(2009,'Rubén Corona','Espectador')
+
+class Jugador:
+    def __init__(self,personaje,vida,velocidad):
+        self.personaje = personaje
+        self.vida = vida
+        self.velocidad = velocidad
+    
+    def __str__(self):
+        return f"Personaje: {self.personaje} Vida: {self.vida} Velocidad: {self.velocidad}"
+    def correr(self):
+        print(f"{self.personaje} está corriendo a una velocidad de {self.velocidad}km/hora")
+    def atacar(self):
+        print(F"El personaje ataca con su habilidad")
+    def quitar_vida(self,daño):
+        self.vida -= daño
+        print(F"Al personaje se le ha quitado {daño} de daño")
+personaje1 = Jugador('Kratos',1900,180)
 
 
 
