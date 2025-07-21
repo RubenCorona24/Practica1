@@ -35,6 +35,11 @@ def inicio():
                   label.config(text="DISTE CLIC EN EL BOTÓN!",font=("Arial",14,'bold'),fg='green')
              boton = tk.Button(text='Cambiar color del label',command=cambiar_texto)
              boton.pack() 
+             listbox = tk.Listbox(ventana,width=30,height=10)
+             listbox.insert(0,'Primer elemento')
+             listbox.insert(1,'Segundo elemento')
+             listbox.insert(2,'Tercerr elemento')
+             listbox.pack()
              def cerrar():
                   ventana.destroy()
              boton_cerrar = tk.Button(ventana,text='CERRAR',command=cerrar) 
