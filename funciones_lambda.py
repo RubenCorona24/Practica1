@@ -21,14 +21,28 @@ print(list(numeros_pares))
 
 #OTRO EJEMPLOS
 
-  #ordenar una lista de tuplas por el segundo valor
 personas = [("Ana", 22), ("Luis", 30), ("Carla", 25)]
 ordenado = sorted(personas, key=lambda x: x[1])
-print(ordenado)
+print(ordenado) #ordenar una lista de tuplas por el segundo valor---sorted(iterable,key=None,reverse=False)
+
 #Ejemplo con tkinter
-ventana = tk.Tk()
-boton= tk.Button(ventana,text='SALUDAR',command=lambda:print("!Hola!"))
-boton.pack()
+#ventana = tk.Tk()
+#boton= tk.Button(ventana,text='SALUDAR',command=lambda:print("!Hola!"))
+#boton.pack()
 
 
-ventana.mainloop()
+#ventana.mainloop()
+numbers = [-3,4,6,7,5,-6]
+print(list(filter(lambda num:num <=0,numbers))) #Función para Filtrar números negativos con filter()
+
+other = [1,2,3,4]
+dobles = map(lambda n:n*2,other)
+print(list(dobles)) #Función para doblar cada número de una lista con map()---map(función,iterable)
+
+names = ['Juan','Eduardo','Sabrina']
+mayusculas = map(lambda name:name.upper(),names)
+print(list(mayusculas)) #Función para convertir a mayusculas cada nombre de la lista con map()
+
+palabras = ['hola', 'mundo', 'python']
+longitud = map(lambda palabra:len(palabra),palabras)
+print(list(longitud)) #Función para devolver longitud de cada palabra en la lista
