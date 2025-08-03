@@ -1,0 +1,14 @@
+Los datos son:
+
+Nombre: Camila
+apellido: ´Gutierrez
+----------
+Nombre: Rolando
+apellido: Florencia
+----------
+Nombre: Nicolás
+apellido: Espinoza
+----------
+Nombre: Armando
+apellido: Jimenez
+----------
