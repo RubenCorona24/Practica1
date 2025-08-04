@@ -77,6 +77,16 @@ def dato_curioso():
              'La Torre Eiffel puede ser 15 cm más alta durante el verano. Todo tiene una explicación: se debe a la expansión térmica que significa que el hierro se calienta, las partículas ganan energía cinética y ocupan más espacio.']
     dato_curioso = choice(datos)
     hablar(dato_curioso)
+def tomar_nota():
+    nota = trans_voz_a_texto()
+    if nota:
+        fecha = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+        with open(f'nota_{fecha}.txt','w',encoding='utf-8') as file:
+            file.write(nota)
+            hablar(f'tu nota ha sido guardada con éxito con el nombre: nota_{fecha}.txt ')
+    else:
+        hablar("Lo siento, no escuché nada para guardar.")
+
 
 
 def centro_pedidos(): #Función de centro de pedidos
@@ -122,7 +132,7 @@ def centro_pedidos(): #Función de centro de pedidos
         elif 'adiós' in pedido:
             hablar("Claro, fue un gusto ayudarte")
             comenzar  =False
-        elif 'reproducir' in pedido:
+        elif 'reproducir' in pedido or 'reproduce' in pedido:
             hablar("Buena idea, ya mismo la reproduzco")
             pywhatkit.playonyt(pedido)
             continue
@@ -150,6 +160,10 @@ def centro_pedidos(): #Función de centro de pedidos
         elif 'dato curioso' in pedido:
             hablar("Claro, a continuación, un dato curioso que no sabías hasta hace poco")
             dato_curioso()
+            continue
+        elif 'toma una nota' in pedido or 'escribe una nota' in pedido:
+            hablar("Por supuesto!, ya mismo, ¿que quieres que anote?")
+            tomar_nota()
             continue
 
 
