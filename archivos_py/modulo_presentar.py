@@ -24,8 +24,8 @@ def abrir_ventana():
             ventana.title("SIMULACIÓN DE ERRORES")
             titulo = tk.Label(ventana,text='SIMULADOR DE ERRORES',foreground='green',font=('Arial',16,'bold'))
             titulo.pack()
+            tk.Label(ventana,text='USUARIO',foreground='black',font=('Arial',12,'bold')).pack()
             entrada =tk.Entry()
-            entrada.insert(0,'NOMBRE COMPLETO')
             entrada.pack()
             label_asegurado = tk.Label(ventana)
             def comprobar_simulacion():
@@ -36,7 +36,7 @@ def abrir_ventana():
                 else:
                     label_asegurado.config(text='Usuario incorrecto',foreground='red',font=('Arial',11,'bold'))
                     label_asegurado.pack()
-            tk.Label(text='CONTRASEÑA DEL USUARIO',foreground='black').pack()
+            tk.Label(text='CONTRASEÑA DEL USUARIO',foreground='black',font=('Arial',12,'bold')).pack()
             entrada_contraseña = tk.Entry()
             entrada_contraseña.pack()
             label_contra = tk.Label(ventana)
@@ -51,6 +51,26 @@ def abrir_ventana():
             boton_simulacion = tk.Button(ventana,text='COMPROBAR USUARIO',command=comprobar_simulacion,foreground='blue')
             boton_simulacion.pack()
             tk.Button(ventana,text='COMPROBAR CONTRASEÑA',command=comprobar_contraseña,foreground='blue').pack()
+            def asegurar_contraseñas():
+                if entrada.get() == 'Rubén Santiago' and entrada_contraseña.get() == '333':
+                    boton_redireccionar.config(state='normal')
+                else:
+                    pass
+            tk.Button(ventana,command=asegurar_contraseñas,text='ASEGURAR',foreground='purple',font=('Arial',12,'bold')).pack()
+
+
+            def redireccionar():
+                    top_level = tk.Toplevel()
+                    top_level.title('Entrada top level')
+                    tk.Label(top_level,text='FELICIDADES, INTRODJISTE LAS CONTRASEÑAS CORRECTAS',font=('Arial',12,'bold'),foreground='brown').pack()
+                    def cerrar():
+                        top_level.destroy()
+                        ventana.destroy()
+                    tk.Button(top_level,text='CERRAR',command=cerrar,foreground='red',font=('Arial',12,'bold'),pady=10).pack()
+                    top_level.mainloop()
+            boton_redireccionar = tk.Button(ventana,text='REDIRECCIONAR',command=redireccionar,foreground='purple',font=('Arial',12,'bold'),state='disabled')
+            boton_redireccionar.pack()
+
 
             ventana.mainloop()
         elif respuesta == 'no':
