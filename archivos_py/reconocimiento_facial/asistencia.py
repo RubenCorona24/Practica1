@@ -2,6 +2,7 @@
 import cv2
 import face_recognition as fr
 import os
+from datetime import datetime
 import numpy  #importamos librerias 
 #cargar imágenes
 ruta = 'archivos_aparte\\empleados' #Obtenemos la ruta
@@ -34,6 +35,17 @@ def codificar(imagenes):
                print("⚠️ No se detectó rostro en una imagen.")
      return lista_codificada
 
+def registrar_ingresos(persona): #Función para registrar los ingresos
+     with open('registro.csv','r+') as file:
+          lista_datos = file.readlines()
+          nombres_registro = []
+          for line in lista_datos:
+               ingreso = line.split(',')
+               nombres_registro.append(ingreso[0])
+          if persona not in nombres_registro:
+               tiempo= datetime.now().strftime('%H:%M:%S')
+               file.writelines(f"\n{persona}, {tiempo}")
+
 lista_empleados_codificada = codificar(images) #creamos lista de empleados codificada
 captura = cv2.VideoCapture(0,cv2.CAP_DSHOW) #toma una captura de imagen
 # captura
@@ -56,7 +68,14 @@ else:
                    print("❌ No coincide con ninguno de nuestros empleados.")
               else:
                    nombre_empleado = names_empleados[indice_coincidencias]
-                   print(f"✅ Bienvenido al trabajo {nombre_empleado}") #Mensaje de que se reconoció el rostro
+                   y1,x2,y2,x1 = caraubic
+                   cv2.rectangle(imagen,(x1,y1),(x2,y2),(0,255,0),2)
+                   cv2.rectangle(imagen,(x1,y2-35),(x2,y2),(0,255,0),cv2.FILLED)
+                   cv2.putText(imagen,nombre_empleado,(x1+6,y2-6),cv2.FONT_HERSHEY_COMPLEX,1,(255,255,255))
+                   registrar_ingresos(nombre_empleado)
+                   imagen_para_mostrar = cv2.cvtColor(imagen, cv2.COLOR_RGB2BGR)
+                   cv2.imshow('Imagen web', imagen_para_mostrar)
+                   cv2.waitKey(0) #Mantener la cámara abierta
                 
 captura.release()
 cv2.destroyAllWindows() #Cerrar la cámara de captura
