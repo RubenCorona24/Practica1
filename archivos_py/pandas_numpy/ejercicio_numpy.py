@@ -22,6 +22,14 @@ print(f"Array B ordenada por filas:\n{E}")
 F = D.T #Transpuesto el array D, de donde habiamos cambiado la forma del array A
 print('-' * 30)
 print(f"Array D transpuesto: {F}")
+print('-' * 30)
+G = np.array([2,3,4,5,7,8]) #Creamos un array de primera dimensión
+print(f"Array de primera dimensión: {G}")
+print('-' * 30)
+H = np.array([[1,2,3,4],[5,6,7,8]]) #Creamos un array de segunda dimensión
+print(F"Array de segunda dimensión: {H}")
+
+
 
 
 
