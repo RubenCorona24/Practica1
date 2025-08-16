@@ -1,6 +1,8 @@
 import numpy as np #Impportamos la librería numpy con el alias np
 #Ejercicios de arrays con numpy
 #Creamos arrays de (3,3), con números aleatorios de 0 1 10
+print(F"PRESENTACIÓN DE ARRAYS EN NUMPY")
+print('-' * 30)
 A = np.random.randint(1,10,(3,3))
 B = np.random.randint(1,10,(3,3))
 print(f"Array A: \n{A}")
@@ -28,7 +30,10 @@ print(f"Array de primera dimensión: {G}")
 print('-' * 30)
 H = np.array([[1,2,3,4],[5,6,7,8]]) #Creamos un array de segunda dimensión
 print(F"Array de segunda dimensión: {H}")
-
+print(H.reshape(4,2)) #Modificamos la estructura mas NO los valores del array H
+I = np.arange(0,101,5)  #Array de un rango de 0 a 100, con un pasoo de 5
+print('-' * 30)
+print(f"Array con un rango de 0 a 100, con paso de 5:\n{I}")
 
 
 
