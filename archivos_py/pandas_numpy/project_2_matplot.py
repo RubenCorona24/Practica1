@@ -36,3 +36,34 @@ ax5.set(title='INGRESOS POR OCUPACIÓN',xlabel='FUentes',ylabel='Ingresos')
 ax6.plot(lista3,lista4,color='blue')
 ax6.set(title='GRÁFICA LINEAL',xlabel='Eje x',ylabel='Eje y')
 plt.show()
+
+df4 = pd.read_csv("archivos_aparte\\comida_rápida.csv")
+suma_ventas = df['Ventas'].sum()
+producto_mejor = df4.loc[df4['Ventas'].idxmax(),'Comida']
+import tkinter as tk
+ventana = tk.Tk()
+lbl_productos = tk.Label(text=f'PRODCUCTOS Y VENTAS:\n {df4}',foreground='black',font=('Arial',12,'bold'))
+lbl_productos.pack(pady=10)
+lbl_ventas = tk.Label()
+lbl_ventas.pack()
+def ver_ventas():
+ lbl_ventas.config(text=f'Las ventas totales fueron: {suma_ventas}USD',foreground='red',font=('Arial',12,'bold')).pack(pady=15)
+def ver_pruducto():
+ lbl_producto.config(text=f"El producto más vendido: {producto_mejor}",foreground='green',font=('Arial',12,'bold'))
+    
+lbl_producto = tk.Label()
+lbl_producto.pack()
+tk.Button(text='PRODUCTO MÁS VENDIDO',command=ver_pruducto,foreground='purple',font=('Arial',12,'bold')).pack(pady=15)
+
+tk.Button(text='VER VENTAS TOTALES', command=ver_ventas,foreground='purple',font=('Arial',16,'bold')).pack(pady=15)
+def mostrar_gráfica():
+ fig,ax = plt.subplots()
+ ax.bar(df4['Comida'],df4['Ventas'],color='skyblue')
+ ax.set(title='VENTAS RESTAURANTE "GLOSARIO"',xlabel='Comidas',ylabel='Ventas')
+ plt.show()
+tk.Button(text='MOSTRAR GRÁFICO',command=mostrar_gráfica,foreground='purple',font=('Arial',16,'bold')).pack(pady=15)
+def cerrar():
+ ventana.destroy()
+tk.Button(text='CERRAR',command=cerrar,foreground='purple',font=('Arial',16,'bold')).pack(pady=15)
+ 
+ventana.mainloop()
