@@ -47,7 +47,8 @@ plt.show()
 import tkinter as tk
 ventana = tk.Tk()
 ventana.title("Ventas de Productos")
-tk.Label(ventana,text='PRODUCTOS DEL MERCADO',foreground='green',font=("Arial",12,'bold')).pack(pady=15)
+ventana.config(bg="lightyellow") 
+tk.Label(ventana,text='PRODUCTOS DEL MERCADO',foreground='green',font=("Arial",16,'bold')).pack(pady=15)
 lbl_info = tk.Label(ventana,text=f'Info:\n{data_frame}',foreground='black',font=("Arial",10,'bold'))
 lbl_info.pack(pady=15)
 tk.Label(ventana,text=f'PRODUCTO MÁS VENDIDO:\n{producto_mayor}',foreground='black',font=("Arial",10,'bold')).pack(pady=15)
@@ -77,7 +78,12 @@ def añadir_producto():
         messagebox.showerror("Error","Debes escribir un producto")
 
 tk.Button(ventana,text='AÑADIR PRODUCTO',command=añadir_producto,foreground='purple',font=('Arial',12,'bold')).pack(pady=15)
-
+def grafico_precio_unidades():
+    fig,ax = plt.subplots()
+    ax.bar(data_frame['Producto'],data_frame['Unidades vendidas'],color='skyblue')
+    ax.set(title='Vendidos Productos',xlabel='Producto',ylabel='Unidades vendidas')
+    plt.show()
+tk.Button(ventana,text='GRÁFICO PRODUCTOS VENDIDOS',command=grafico_precio_unidades,foreground='purple',font=("Arial",12,'bold')).pack(pady=15)
 
 
     
