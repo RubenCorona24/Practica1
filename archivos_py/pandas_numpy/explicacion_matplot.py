@@ -5,10 +5,11 @@ x = (1,2,3,4,5,6,7,8,9)
 
 y = []
 for n in x:
-    y.append(n**2) #Agregamos el valor de x al cuadrado a y
+    y.append(n**2) #Agregamos el valor de x al cuadrado a y  #YA TENEMOS NUESTRAS COORDENADAS
 
 plt.plot(x,y)
 plt.title("Explicación de Matplotlib")
 plt.xlabel("Eje x")
 plt.ylabel("Eje y")
 plt.show()
+
