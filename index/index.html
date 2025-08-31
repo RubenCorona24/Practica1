@@ -4,13 +4,44 @@
     <title>Documento de Ruben</title>
 </head>
 <body>
-    <form>
+    <!--ul es lista no ordenada-->
+    <ul>
+        <li>Elemento 1</li>
+        <li>Elemento 2</li>
+        <li>Elemento 3</li>
+        <li>Elemento 4</li>
+
+    </ul>
+    <!--ol es lista ordenada-->
+    <ol>
+        <li>Elemento 1</li>
+        <li>Elemento 2</li>
+        <li>Elemento 3</li>
+        <li>Elemento 4</li>
+
+    </ol>
+
+
+
+
+
+
+    <form action="/formulario" method="GET">
         <label for="nombre">Nombre</label>
         <input id="nombre" name="nombre" placeholder="Nombre"/>
         <!-- darle foco al input de "nombre"-->
          <hr>
         <label for="edad">Edad</label>
-        <input id="edad"/>
+        <input id="edad" placeholder="Edad" name="edad"/>
+        <label for="archivo">Archivo</label>
+        <input type="file",id="archivo"/>
+        <br>
+        <label for="comentario">Comentario</label>
+        <textarea cols="50" rows="10" id="comentario" placeholder="Ingrese comentario" name="comentario"></textarea>
+        <br>
+        <button type="button">Tipo boton</button>
+        <button type="reset">Tipo reset</button>
+        <button type="submit">Tipo submit</button>
      </form>
 
 
