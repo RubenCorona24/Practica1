@@ -4,12 +4,15 @@
     <title>Document</title>
 </head>
 <body>
-    <header></header> 
-    <h1>Blog de Rubén</h1> <!-- El nombre del blog -->
-
-
+    <header>
+    <h1 id="titulo">Blog de Rubén</h1> <!-- El nombre del blog -->
+    </header> 
+    <div >
+        <p>Soy un párrafo dentro de un div</p>
+    </div>
     <section>
-        <article> <!-- Definir contenido independiente -->
+        <article class="post"> <!-- Definir contenido independiente -->
+            <!-- Las clases me permiten identificar los elementos, para ser seleccionados por selectores -->
             <h2>Título de mi post</h2>
             <p>Esta es la descripción de mi post</p>
             <img src="mario.jpeg" width="400"/>
@@ -20,13 +23,13 @@
                 a un juego de Nintendo en el año 1985 
             </p>
          </article>
-         <article> <!-- Definir contenido independiente -->
+         <article class="post"> <!-- Definir contenido independiente -->
             <h2>Título de mi post 2</h2>
             <p>Esta es la descripción de mi post 2</p>
             <img src="bob_esponja.png" width="400"/>
             <p>Este es un texto del artículo 2 y es un texto de prueba</p>
          </article>
-         <article> <!-- Definir contenido independiente -->
+         <article class="post"> <!-- Definir contenido independiente -->
             <h2>Título de mi post 3</h2>
             <p>Esta es la descripción de mi post 3</p>
             <img src="goku.jpeg" width="400"/>
@@ -37,6 +40,7 @@
          </article>
     </section> <!-- Definir secciones de nuestra aplicación -->
     <footer> 
+        <a href="#titulo">Ir al comienzo</a>  <!-- Para que me rediriga a este "ID" -->
         <a href="mailto:coronamoronarubensantiago@gmail.com">Contáctame aquí</a> <!-- Vincular con correro electrónico -->
         <p>Copyright 2025</p>
     </footer> <!-- Pie de página de la página web -->
