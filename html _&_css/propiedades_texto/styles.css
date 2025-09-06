@@ -1,0 +1,21 @@
+p{
+    color: red;
+    font-family: sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    font-style: italic;
+    text-align: justify;
+    text-decoration: underline;
+    line-height: 8.5;
+    letter-spacing: 4;
+    text-transform: uppercase;
+    word-wrap: break-word;
+}
+h1{
+    text-align: center;
+}
+
+span{
+    text-decoration: line-through;
+    color: brown;
+}
