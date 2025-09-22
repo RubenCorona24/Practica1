@@ -51,19 +51,21 @@ print(df.info())
 desviacion_estandar = df['Total'].std()
 print(desviacion_estandar)
 #Seleccionamos otro archivo
+def llamar_df():
+    df2 = pd.read_csv("archivos_aparte//Top-Películas.csv")
+    print(df2)
 
-df2 = pd.read_csv("archivos_aparte//Top-Películas.csv")
-#Creamos un dataframe en base al rating de mayor a menor
-df_ordenado = df.sort_values(by='rating',ascending=False)
-print(df_ordenado.head(10))
-#Ahora modificamos el df ordenado
-df_ordenado = df.sort_values(by=['rating','recaudación(M)'],ascending=False)
-print(df_ordenado.head(10))
-    #Por medio de df.groupby() agrupamos una columna, en el índice de rating y sacamos su promedio
-df_agrupado = df.groupby('género')['rating'].mean()
-print(df_agrupado)
-    #Ahora agrupamos por año en el índice de recaudación, y eso lo sumamos, depués ordenamos los valores de forma descendente y solo mostrando las primeras 10 series
-df_agrupado = df.groupby('año')['recaudación(M)'].sum() #Hacemos la suma de recaudación por año
-print(df_agrupado.sort_values(ascending=False).head(10))
+#-----------------FUSIONAR DOS DATAFRAMES------------------
+df1 = pd.DataFrame({'ID':[1,2,3],
+                    'Nombre':["Ana","Luis","Carlos"]})
+df2 = pd.DataFrame({'ID':[1,2,4],
+                    'Edad':[25,30,22]}) #Creamos dos DataFrames
+def llamar_dfs(df1,df2):
+    print(f"Primer df:\n{df1}\nSegundo df:\n{df2}\n")
+
+llamar_dfs(df1,df2)
+
+df_combinado = pd.merge(df1,df2,on='ID')
+print(f"Dataframe combinados:\n{df_combinado}")
 
 
