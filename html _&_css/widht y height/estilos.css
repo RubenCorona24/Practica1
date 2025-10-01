@@ -11,3 +11,17 @@ h1{
     background-color: red;
     padding: 10px;
 }
+.formulario_input{
+    padding: 6px 10px;
+    width: 100%;
+    background: black;
+    color: red;
+    margin: 10px;
+}
+.formulario_submit{
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: red;
+    color: white;
+    width: 50%;
+}

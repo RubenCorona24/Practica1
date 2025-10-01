@@ -21,9 +21,6 @@ class Auto:
                 if int(self.gasolina) <= 0:
                         print(f"Error, no hay suficiente gasolina")
                         return Auto.poner_gasolina(self)
-                        
-                
-
                 else:      
                         tiempo = int(input("Tiempo de manejo: "))
                         gasolina_gastada = tiempo*0.5
