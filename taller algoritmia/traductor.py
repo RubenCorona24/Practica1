@@ -23,4 +23,19 @@ def traductor():
     else:
         print("Opción no disponible")
 
-traductor()
+
+def ciclo():
+    x = 1
+    while x<7:
+        print(x)
+        x+=1
+    print("Fin")
+ciclo()
+
+def ciclo_uno_dies():
+    n = 1
+    while n<11:
+        print(n)
+        n+=1
+    print("Fin")
+ciclo_uno_dies()
