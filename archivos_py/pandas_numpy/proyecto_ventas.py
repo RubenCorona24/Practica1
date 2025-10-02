@@ -25,7 +25,7 @@ def examinar_df(df):
 def limpiar_datos(df):
     if df.isnull().sum().sum() ==0:
         print("No hay datos por limpiar")
-        pass
+        return df
     else:
         df_limpio = df.dropna()
         print("Valores Limpios Ejecutados")
@@ -38,8 +38,9 @@ def ordenar_values(df):
         df_ordenado = df.sort_values(by=ordenación,ascending=False)
         print("Prdenaciópn exitosa")
         return df_ordenado
-    except:
-        print("COLUMNA/FILA NO VÁLIDA POR ORDENAR")
+    except Exception as e:
+        print(f"Error al ordenar: {e}")
+        return df
     finally:
         print("----Ordenación de DataFrame finalizada-----")
 
@@ -56,10 +57,10 @@ def menu(df):
             examinar_df(df)
             continue
         elif opcion ==2:
-            limpiar_datos(df)
+            df = limpiar_datos(df)
             continue
         elif opcion ==3:
-            ordenar_values(df)
+            df = ordenar_values(df)
             continue
         elif opcion ==4:
             guardar_df(df)
@@ -72,8 +73,10 @@ def menu(df):
             continue
 
 
+df = leer_archivo()
+if df is not None:
+    df=menu(df)
 
-menu(df)
 
     
 
