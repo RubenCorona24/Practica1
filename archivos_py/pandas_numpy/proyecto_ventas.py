@@ -73,13 +73,32 @@ def menu(df):
             continue
 
 
-df = leer_archivo()
-if df is not None:
-    df=menu(df)
-
-
+try:
+    df2 = pd.read_csv("archivos_aparte/Datos_VentaS_Tienda.csv")
+    print(df2)
+except:
+    print("FILE NOT FOUND")
     
+examinar_df(df2)
+def agrupar_datos(df):
+    try:
+        datos_agrupados = input("Datos/columnas que quieres agrupar: ")
+        datos_operaciones_promedio = input("Columna/datos que quieres sacar el promedio: ")
+        agrupación = df.groupby(datos_agrupados)[datos_operaciones_promedio].mean()
+        print("Agrupación exitosa")
+        print(agrupación)
+    except:
+        print("ERROR EN LA AGRUPACIÓN")
+    finally:
+        print("FIN DE LA AGRUPACIÓN")
 
+agrupar_datos(df2)
 
-
-
+df_concatenado = pd.concat([df,df2],ignore_index=True) #Concatenamos los Dataframe
+print(df_concatenado)
+#GUardar el DataFrame concatenado en un archivo csv
+try:
+    df_concatenado.to_csv("archivos_aparte/archivos_csv/Dataframes Concatenados.csv",index=False)
+    print("DataFrame Guardado con éxito")
+except:
+    print("ERROR AL GUARDAR EL DATAFRAME")
