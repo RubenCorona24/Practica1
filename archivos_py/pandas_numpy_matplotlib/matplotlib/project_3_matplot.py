@@ -66,7 +66,7 @@ def graficar(df):
             ax.hist(df[column_x],df[column_y])
             plt.show()
     else:                       
-        print("ERROR, NO DISPONEMOS DE ESE TIPO DE GRÁFICO")
+        print("ERROR, NO D  ISPONEMOS DE ESE TIPO DE GRÁFICO")
     
 
 #Asegurar que las fechas estén en el formato correcto
@@ -76,7 +76,7 @@ def graficar(df):
 def graficar_ciudad_mes():
     #modificamos columna fecha
     df['Fecha'] = pd.to_datetime(df['Fecha'],dayfirst=True, errors='coerce')
-    city = input(f"Seleccione la ciudad entre la siguiente lista:\n{df['Ciudad']}\nSelección: ")
+    city = input(f"Seleccione la ciudad entre la siguiente lista:\n{df['Ciudad']}\nSelección: ").title()
     month = int(input("Seleccione un mes en número: "))
     print(f"Vamos a graficar con lo siguientes datos:\nCiudad: {city}\nMes: {month}")
     filtro = (df['Ciudad'] == city)  & (df['Fecha'].dt.month  == month)
@@ -89,6 +89,7 @@ def graficar_ciudad_mes():
     plt.title(f"Temperaturas de ciudad {city} del mes {month}")
     plt.xlabel("Fecha")
     plt.ylabel("Temperatura Celsius ")
+    plt.xticks(rotation=45)
     plt.legend()
     plt.grid(True)
     plt.show()
