@@ -68,6 +68,8 @@ def graficar_datos():
     ax3.grid(True,linestyle='--',alpha=0.6)
     fig.suptitle("Análisis de Ventas de Modelos Año 2025",fontsize=16)
     plt.tight_layout()
+    plt.savefig("archivos_aparte/análisis_ventas_modelos_2025.png",dpi=300)
     plt.show()
+    
 
 graficar_datos()
