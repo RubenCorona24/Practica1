@@ -32,9 +32,20 @@ for n in df['Total Venta']:
     values.append(data)
 df['Demanda'] = values
 #----NUEVO DATAFRAME CON COLUMNA DE DEMANDA----
-g2= sns.barplot(data=df,x='Producto',y='Total Venta',hue='Demanda')
-g2.set_title("Productos y Ventas")
-g2.set_xlabel("Productos")
-g2.set_ylabel("Ventas totales")
-plt.xticks(rotation=45)
-plt.show()
+def g2():
+    g2= sns.barplot(data=df,x='Producto',y='Total Venta',hue='Demanda')
+    g2.set_title("Productos y Ventas")
+    g2.set_xlabel("Productos")
+    g2.set_ylabel("Ventas totales")
+    plt.xticks(rotation=45)
+    plt.show()
+
+def g3():
+    g3 = sns.barplot(data=df,x='Cantidad',y='Precio Unitario',hue='Producto')
+    g3.set_title("Cantidad y Precio")
+    g3.set_ylabel("Precio Unitario")
+    g3.set_xlabel("Cantidad")
+    plt.xticks(rotation=40)
+    plt.savefig("archivos_aparte/Distribución Precio Unitario_Cantidad")
+    plt.show()
+g3()
