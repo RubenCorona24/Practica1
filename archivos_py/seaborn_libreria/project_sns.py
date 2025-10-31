@@ -1,5 +1,5 @@
 import seaborn as sns
-import matplotlib.pyplot as plt
+import matplotlib.pyrplot as plt
 import pandas as pd
 data = sns.load_dataset("penguins")
 #Cambiar el estilo del gráfico
