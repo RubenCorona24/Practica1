@@ -34,3 +34,4 @@ def graph_cat():
     plt.suptitle("Comparación categórica Precio/Cortes") #Agregamos el título
     plt.show()
 graph_cat()
+plt.sca
