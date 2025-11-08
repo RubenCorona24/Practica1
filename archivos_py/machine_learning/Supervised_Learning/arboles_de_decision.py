@@ -38,3 +38,33 @@ plt.show() #Mostramos el modelo
 #Filled = True: rellena en colores por clase
 #class_names: agrega nombre a cada clase
 #feature_names: visualizamos las columnas por su nommbre en vez de la indexación
+
+#OTRO EJEMPLO DE ESTE ALGORITMO
+data2 = {
+    'Edad': [22, 25, 30, 35, 40, 45, 50, 55, 60, 65],
+    'Salario': [25000, 30000, 35000, 40000, 50000, 60000, 65000, 70000, 80000, 90000],
+    'Compra': [0, 0, 0, 1, 1, 1, 1, 1, 1, 1]
+}
+
+df2 = pd.DataFrame(data2)
+#separar las variables
+X = df2[['Edad','Salario']]
+y = df2['Compra']
+#Dividir los datos en %80 entrenamiento y %20 prueba
+X2_entrena,X2_prueba,y2_entrena,y2_prueba = train_test_split(X,y,train_size=0.8,random_state=42)
+#entrenamos el modelo 2
+model2 = DecisionTreeClassifier(max_depth=5)
+model2.fit(X2_entrena,y2_entrena)
+#--------------------Evaluar el modelo con los datos de prueba-------------------------
+score = model2.score(X2_prueba,y2_prueba)
+print(f"Precisión del modelo: {score:.2f}")
+#Visualizar el segundo arbol de decision
+plt.figure(figsize=(8,8))
+plot_tree(decision_tree=model2,
+          filled=True,
+          class_names=['No compra','Compra'],
+          feature_names=['Edad','Salario'])
+plt.title("ÁRBOL DE DECISION DE PROBABILIDADES DE COMPRA EN EDAD/SALARIO",fontsize=16)
+plt.show() #Mostramos el árbol de decision
+
+#La máxima precisión que puede alcanzar un modelo es de 1.0
