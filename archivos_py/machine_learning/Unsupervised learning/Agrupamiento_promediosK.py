@@ -40,3 +40,21 @@ def grafico_kmeans():
     
 grafico_kmeans()
 
+
+#OTRO EJEMPLO DE AGRUPAMIENTO CON K MEANS
+np.random.seed(42)
+data = np.random.rand(100,2)
+kmeans = KMeans(n_clusters=5,random_state=42)
+kmeans.fit(data) #entrenamos al modelo
+
+centroids = kmeans.cluster_centers_
+labels = kmeans.labels_
+#Visualizamos en gráfica
+def kmeans_example():
+    plt.figure(figsize=(10,6))
+    plt.scatter(data[:,0],data[:,1],c=labels,cmap='viridis',marker='o')
+    plt.scatter(centroids[:,0],centroids[:,0],c='red',marker='x',s=200,label='Centroides')
+    plt.title("Visualización K-Means Clustering")
+    plt.legend() #Activamos la leyenda (mostrar etiquetas)
+    plt.show() #Mostramos gráfico
+kmeans_example()
