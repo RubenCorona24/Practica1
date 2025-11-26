@@ -5,7 +5,7 @@ import pandas as pd
 import seaborn as sns
 
 #cargamos el dataset de clientes
-df = pd.read_csv("archivos_aparte/archivos_csv/datos_clientes.csv")
+df = pd.read_csv(r"C:\Users\coron\OneDrive\Escritorio\Algoritmia\archivos_aparte\archivos_csv\datos_clientes.csv")
 print(df.head()) #Leemos primeras columnas
 
 def verificar_data(df):

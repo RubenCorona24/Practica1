@@ -34,8 +34,7 @@ def grafico_kmeans():
     plt.xlabel("Logintud del pico (milímetros)")
     plt.ylabel("Profundidad del pico (milímetros)")
     plt.title("K Means Clustering en el conjunto de Datos Pinguinos")    
-    plt.legend() #Nos aseguramos que se muestren las etiquetas
-    plt.savefig("archivos_aparte/data_sns/K Means Clustering pinguins") #Guardamos el archivo
+    plt.legend() #Nos aseguramos que se muestren las etiquetas) #Guardamos el archivo
     plt.show()
     
 grafico_kmeans()
