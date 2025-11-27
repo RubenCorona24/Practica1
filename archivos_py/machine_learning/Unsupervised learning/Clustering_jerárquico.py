@@ -7,7 +7,7 @@
 #Importamos librerías
 from sklearn.datasets import load_iris
 import matplotlib.pyplot as plt
-from scipy.cluster.hierarchy import dendrogram, linkage
+from scipy.cluster.hierarchy import dendrogram, linkage, fcluster
 
 #Cargamos el dataset
 iris = load_iris()
@@ -22,3 +22,17 @@ plt.title("Dendrograma del Clustering Jerárquico de Iris")
 plt.xlabel("Muestras")
 plt.ylabel("Distancia")
 plt.show() #Mostramos
+
+#Obtener los clusters finales
+clusters = fcluster(z,t=3,criterion='maxclust')
+#z: resultado del linkage
+#t: número de clusters
+#criterion: agrupa en t clusters
+
+#Visualización de los clusters
+plt.scatter(X[:,0], X[:,1], c=clusters)
+plt.title("Clusters Jerárquicos de Iris")
+plt.xlabel("Sepal length")
+plt.ylabel("Sepal width")
+plt.show()
+#
