@@ -9,7 +9,7 @@ from sklearn.preprocessing import MinMaxScaler #Para escalar datos
 from sklearn.cluster import KMeans
 from sklearn.decomposition import  PCA
 from scipy.cluster.hierarchy import dendrogram,linkage
-
+from tkinter import messagebox
 #Leemos el archuvo csv
 df = pd.read_csv(r"C:\Users\coron\OneDrive\Escritorio\Algoritmia\archivos_aparte\archivos_csv\customer_data.csv")
 print(df.head(5)) #Imprimimos las primeras 5 filas del df
@@ -43,9 +43,7 @@ Z = linkage(df_pca,method='ward') #Método ward para minimizar la varianza dentr
 
 #SVD: descomposición de singular value
 U,sigma,Vt = np.linalg.svd(df_escalado)
-print(f"U: {U}\n")
-print(f"Sigma: {sigma}\n")
-print(f"Vt: {Vt}\n")
+
 
 #Visualización de los datos
 def estadisticas():
@@ -92,4 +90,36 @@ def hierarchical_clustering():
     plt.xlabel("Muestras")
     plt.ylabel("Distamcias")
     plt.show() #Mostramos el dendrograma
-hierarchical_clustering()
+
+def menu():
+    while True:
+        print("-------BIENVENIDO AL MENÚ DE CLASIFICACIÓN DE CLIENTEES---------")
+        print("Tienes 4 opciones para visualuización de datos:\n1: Ver estadísticas generales\n2:Visuañizar componentes principales de PCA\n3: Visualizar los centroides y los componentes principales de KMeans\n4: Visualizar el dendrograma del Clustering Jerárquico\n5: Ver los primeros y últimos 10 filas del DataFrame\n6: Salir del programa ")
+        elige = int(input("Elige tu opción: "))
+        if elige == 1:
+            print("Opción de Ver Estadísticas generales")
+            estadisticas()
+            continue
+        elif elige ==2:
+            print("Opción de ver componentes PCA")
+            grafico_pca()
+            continue
+        elif elige ==3:
+            print("Opción de ver centroides y KMeans clustering")
+            kmeans_graph()
+            continue
+        elif elige == 4:
+            print("Opción de ver dendrograma del clustering Jerárquico")
+            hierarchical_clustering()
+            continue
+        elif elige == 5:
+            print("Opción de ver DataFrame")
+            print(f"Primeras 10 Filas:\n{df.head()}\nÚltimas 10 filas:\n{df.tail()}")
+            continue
+        elif elige==6:
+            print("Fue un gusto ayudarte!!")
+            break
+        else:
+             messagebox.showerror("ERRORX","Solo puedes seleccionar: 1,2,3,4,5") #Mostramos error en pantalla
+             continue
+menu()
