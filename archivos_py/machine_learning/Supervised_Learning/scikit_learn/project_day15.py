@@ -40,7 +40,7 @@ pipeline.fit(X_entrena,y_entrena)
 # Realizar predicciones con el conjunto de prueba
 predicciones = pipeline.predict(X_prueba)
 
-# Evaluación del modelo
+# Evaluación del modelo (muestra de precisión y predicciones)
 puntaje = pipeline.score(X_prueba,y_prueba)
 print(f"\nPrecisión del modelo: {puntaje}")
 puntajes_validacion_cruzada = cross_val_score(pipeline,X,y,cv=5)
