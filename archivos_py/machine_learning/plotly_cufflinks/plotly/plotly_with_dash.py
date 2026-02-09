@@ -7,37 +7,38 @@ import plotly.express as px
 import dash
 from dash import html,dcc,Input,Output
 
-
+#Creamos un dataframe de ejemplo
 df = pd.DataFrame({
-    'Mes': ['Enero','Febrero'],
-    'ventas': [[232,3434,3434],[23243,3443]]
+    'fruta': ['Manzana','Banana','Uvas','Peras','Mango'],
+    'cantidad': [166,150,189,176,122],
+    'ciudad': ['New York','Bogotá','Ciudad de México','Lima','Washington']
 })
 #Creamos la app(dash.Dash)
 app = dash.Dash(__name__)
 #Creamos el layout
-app.layout = html.Div([
-    html.H1('Ventas Dashboard'),
-    dcc.Graph(id='Grafica-ventas'),
-    dcc.Dropdown(id='dropwdown-mes',
-                 options=[
-                     {'label':'Enero','value':'Enero'},
-                     {'label':'Febrero','value':'Febrero'}
-                 ],
-                 value='Enero')
+fig =px.line(df,x='mes',y='ventas')
+app.layout = html.Div(children=[
+    html.H1('Ventas Dashboard'),    
+    dcc.Dropdown(id='dropdown-mes',
+                 options=[{'label':'New York','value':'New York'},
+                     {'label':'Bogotá','value':'Bogotá'},
+                     {'label':'Ciudad de México','value':'Ciudad de México'},
+                     {'label':'Lima','value':'Lima'}
+                     {'label':'Washington','value':'Washington'}],
+                     value='New York'),
+                     dcc.Graph(id='Grafico')
 ])
 
-#Usamos plotly para graficar en dash
-fig =px.line(df,x='Mes',y='ventas')
-dcc.Graph(id='Grafica-ventas',figure=fig)
 
 #Callbacks para interactividad
 @app.callback(
     Output('Grafica-ventas','figure'),
-    Input('dropwdown-mes','value')
+    Input('dropdown-mes','value')
 )
 def actualizar_grafico(mes):
     df_filtrado = df[df['mes'] == mes] #Filtramos df
-    px.line(df_filtrado,x='Mes',y='ventas')
+    fig = px.line(df_filtrado,x='mes',y='ventas')
+    return fig #Devolvemos la figura
 
 
 #Ejecutamos el Dashboard
