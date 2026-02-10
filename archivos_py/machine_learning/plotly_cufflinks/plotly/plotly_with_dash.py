@@ -23,7 +23,7 @@ app.layout = html.Div(children=[
                  options=[{'label':'New York','value':'New York'},
                      {'label':'Bogotá','value':'Bogotá'},
                      {'label':'Ciudad de México','value':'Ciudad de México'},
-                     {'label':'Lima','value':'Lima'}
+                     {'label':'Lima','value':'Lima'},
                      {'label':'Washington','value':'Washington'}],
                      value='New York'),
                      dcc.Graph(id='Grafico')
@@ -32,12 +32,12 @@ app.layout = html.Div(children=[
 
 #Callbacks para interactividad
 @app.callback(
-    Output('Grafica-ventas','figure'),
-    Input('dropdown-mes','value')
+    Output('Grafico','figure'),
+    [Input('dropdown-mes','value')]
 )
-def actualizar_grafico(mes):
-    df_filtrado = df[df['mes'] == mes] #Filtramos df
-    fig = px.line(df_filtrado,x='mes',y='ventas')
+def actualizar_grafico(ciudad):
+    df_filtrado = df[df['ciudad'] == ciudad] #Filtramos df
+    fig = px.line(df_filtrado,x='fruta',y='cantidad',color='fruta')
     return fig #Devolvemos la figura
 
 
