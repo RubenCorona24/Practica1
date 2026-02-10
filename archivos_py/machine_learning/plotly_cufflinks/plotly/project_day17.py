@@ -1,6 +1,7 @@
 #-------------DISEÑAMOS UN DASHBOARD EN BASE A DATOS DE TERREMOTO OFICIALES----------------
 import pandas as pd
 import plotly.graph_objects as go
+import plotly.express as px
 import dash
 from dash import html,dcc,Input,Output
 
@@ -23,9 +24,22 @@ fig.add_annotation(x=2,
                    arrowhead=1,
                    arrowsize=1,
                    arrowwidth=2)
+fig2= px.choropleth(locations=df.Country,locationmode='country names',color=df.Magnitude,color_continuous_scale=px.colors.sequential.Plasma)
+fig2.update_layout(title='Mapa coroplético de Densidad de Terremotos por Región')
+fig3 = go.Figure(go.Scatter(
+    x=df.Depth,
+    y=df.Magnitude,
+    mode='markers',
+    marker=dict(color='red',size=10)
+))
+fig3.update_layout(title='Scatter Plot de Magnitud / Profundidad',
+                   xaxis_title='Profundidad',yaxis_title='Magnitud')
 app.layout = html.Div(children=[
     html.H1('Información de Terremotos'),
-    dcc.Graph(id='grafico-terremotos',figure=fig) #Insertamos la figura
+    dcc.Graph(id='grafico-terremotos',figure=fig),
+    dcc.Graph(id='Mapa coroplético',figure=fig2),
+    dcc.Graph(id='Scatterplot magnitud-densidad',figure=fig3)
+      #Insertamos las figuras
 ])
 try:
     if __name__ == '__main__':
