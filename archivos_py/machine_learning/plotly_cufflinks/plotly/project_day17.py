@@ -13,8 +13,8 @@ app = dash.Dash(__name__)
 fig = go.Figure(go.Bar(x=df['Magnitude'].value_counts().index, y=df['Magnitude'].value_counts().values,marker=dict(color='red')))
 fig.update_layout(title={'text':'Gráfico de barras magnitud/num de terremotos',
                          'font':{'size':20,'family':'Comic Sans','color':'red'}},
-                  xaxis_title='Números',
-                  yaxis_title='Magnitud',)
+                  xaxis_title='Magnitud',
+                  yaxis_title='Número de terremotos')
 #Damos formato al titulo y resaltamos el punto mas alto con una anotación
 fig.add_annotation(x=2,
                    y=3409,
