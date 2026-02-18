@@ -16,7 +16,7 @@ df = pd.DataFrame({
 #Creamos la app(dash.Dash)
 app = dash.Dash(__name__)
 #Creamos el layout
-fig =px.line(df,x='mes',y='ventas')
+fig =px.line(df,x='fruta',y='ciudad')
 app.layout = html.Div(children=[
     html.H1('Ventas Dashboard'),    
     dcc.Dropdown(id='dropdown-mes',
