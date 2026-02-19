@@ -1,47 +1,83 @@
 #Proyecto personal de visualización de datos con plotly
-#--ANÁLISIS DE VENTAS GLOBALES ----
-import pandas as pd
-import  kagglehub
-import numpy as np
-import matplotlib.pyplot as plt
-
-#Creamos el dataframe
-df = pd.DataFrame({
-    "fecha": pd.date_range(start="2024-01-01", periods=120),
-    "ciudad": np.random.choice(["CDMX", "Bogotá", "Lima", "Buenos Aires"], 120),
-    "producto": np.random.choice(["Laptop", "Tablet", "Celular"], 120),
-    "categoria": np.random.choice(["Tecnología", "Accesorios"], 120),
-    "ventas": np.random.randint(50, 500, 120),
-    "ganancia": np.random.randint(20, 200, 120)
-})
-
-from functions import visualize,clean_df #Extraemos funciones 
-
+#--ANÁLISIS DE HORAS DE SUEÑO----
+import pandas as pd #Para manejar datos
+import numpy as np #Para operaciones
+import matplotlib.pyplot as plt #Visualizaciones
+from sklearn.model_selection import cross_val_score,train_test_split
+from sklearn.ensemble import RandomForestRegressor #Modelo 
+from sklearn.preprocessing import StandardScaler #Preprocesamiento con StandardScaler
+from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
+df = pd.read_csv("archivos_aparte/dataset_sleep.csv")
+from functions import visualize
 visualize(df)
 
-#Grafico de lineas de ventas en el tiempo
-df['fecha'] =  pd.to_datetime(df['fecha'])
-plt.plot(df["fecha"],df['ventas'])
-plt.title('Ventas por el tiempo')
-plt.xlabel("Fecha")
-plt.ylabel("Ventas")
+#Reemplazar el signo "?" con un np.nan
+df.replace("?",np.nan,inplace=True)
+df = df.dropna()
+df.columns = df.columns.str.strip()
+
+#Reemplazamos columnas por datos tipo numérico
+for col in df:
+    df[col] = pd.to_numeric(df[col], errors="coerce")
+print(df.dtypes) #Confirmamos tipos de datos
+
+#Hacemos visualizaciones generales del dataset
+plt.plot(df['body_weight'],df['total_sleep'])
+plt.title("Relación entre peso en kg y total de sueño hr")
+plt.xlabel("Peso (kg)")
+plt.ylabel("Horas de sueño")
 plt.show()
 
-#Gráfico de barras ventas por ciudad
-plt.bar(df['ciudad'],df['ventas'],color='red')
-plt.title('Ventas por Ciudad')
-plt.xlabel("Ciudad")
-plt.ylabel("Ventas")
+#Gráfico de barras de tiempo de gestación y horas de sueño
+plt.bar(df['gestation_time'],df['total_sleep'])
+plt.title("Relación entre tiempo de gestación y horas de sueño")
+plt.xlabel("Tiempo gestación")
+plt.ylabel("Horas de sueño")
 plt.show()
 
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression
-from sklearn.preprocessing import StandardScaler
+#Dividimos variables independientes y dependientes
+X = df[['gestation_time', 'sleep_exposure_index', 'danger_index']]
+X = X.fillna(X.mean())
+y = df['total_sleep']  
+y = y.fillna(y.mean())
 
-X = df.drop('ventas')
-y = df['ventas']
-x_entrena,x_prueba,y_entrena,y_prueba = train_test_split(X,y,train_size=0.8,random_state=42)
-modelo =LinearRegression()
-modelo.fit(x_entrena,y_entrena)
-score = modelo.score(x_prueba,y_prueba)
-print(f"Precisión del modelo: {score:.2f}")
+#Creamos el modelo
+model = RandomForestRegressor(n_estimators=800,
+    max_depth=10,
+    min_samples_split=5,
+    min_samples_leaf=2,
+    random_state=42)
+
+#Validación cruzada
+score = cross_val_score(model,X,y,cv=5)
+print(f"Score de validación cruzada: {score.mean():.2f}")
+
+#Entrenamiento y prueba
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+
+model.fit(X_train,y_train)
+y_pred = model.predict(X_test) #Predecimos datos
+
+print(f"R2 score: {r2_score(y_test,y_pred)}")
+print(f"MAE: {mean_absolute_error(y_test,y_pred)}")
+print(f"MSE: {mean_squared_error(y_test,y_pred)}")
+
+print(f"Predicciones del modelo: {y_pred}")
+print(f"Datos reales: {y_test}")
+print(f"Score del modelo {model.score(X_test,y_test):.2f}")
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(8,6))
+sns.heatmap(df.corr(), annot=True, cmap="coolwarm")
+plt.show()
+
+importances = pd.Series(model.feature_importances_,index=X.columns)
+importances = importances.sort_values(ascending=False)
+
+importances.plot(kind='bar')
+plt.title("Importancia de las variables")
+plt.show()
