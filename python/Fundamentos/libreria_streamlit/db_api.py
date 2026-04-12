@@ -75,62 +75,126 @@ df = dataframe()
 df["Ki_num"]    = df["Ki"].apply(convertir_ki)
 df["MaxKi_num"] = df["Ki Máximo"].apply(convertir_ki)
 
+def info_planetas(id):
+    url = f"https://dragonball-api.com/api/planets/{id}"
+    r = requests.get(url)
+    if r.status_code == 200:
+        data = r.json()
+        nombre = data['name']
+        isDestroyed = data['isDestroyed']
+        descripcion = data['description']
+        return nombre,isDestroyed,descripcion
+    else:
+        return None
+    
+@st.cache_data
+def dataframe_planetas():
+    lista_planetas = []
+    for n in range(1,21):
+        resultado= info_planetas(n)
+        if resultado is not None:
+            nombre,isDestroyed,descripcion = resultado
+            lista_planetas.append({
+                "Nombre":nombre,
+                "Destruido":isDestroyed,
+                "Descripción":descripcion
+            })
+    df_planetas = pd.DataFrame(lista_planetas)
+    return df_planetas
+
+df_planetas = dataframe_planetas()
+
 def graficar(df):
     df_ordenado = df.sort_values(by='Ki_num',ascending=False)
     fig = px.bar(df_ordenado.head(10),'Nombre','Ki_num',title="Personajes más poderosos")
     return fig
 
 
-def filtros(modo):
-    if modo == "Ordenar":
-        orden = st.selectbox("Columna a ordenar",df.columns)
-        df_ordenado = df.sort_values(by=orden,ascending=False)
-        st.dataframe(df_ordenado)
-        nombre = st.text_input("Nombre del archivo", "datos_filtrados")
-        csv = df_ordenado.to_csv(index=False).encode("utf-8")
-        st.download_button(
-            label="Descargar CSV",
-            data=csv,
-            file_name=f"{nombre}.csv",
-            mime="text/csv"
-        )
-    elif modo=="Agrupar":
-        grupo = st.selectbox("Columna por agrupar",df.columns)
-        agregacion = st.selectbox("Agregación", ["count", "mean", "sum"])
-        df_agrupado = df.groupby(grupo)[["Ki_num", "MaxKi_num"]].agg(agregacion).reset_index()
-        st.dataframe(df_agrupado)
-        nombre = st.text_input("Nombre del archivo", "datos_filtrados")
-        csv = df_agrupado.to_csv(index=False).encode("utf-8")
-        st.download_button(
-            label="Descargar CSV",
-            data=csv,
-            file_name=f"{nombre}.csv",
-            mime="text/csv"
-        )
-    else:
-        st.subheader("Filtración de datos")
-        filtro = st.selectbox("Filtrar por", df.columns)
-        # Detectar tipos de datos
-        if df[filtro].dtype == 'object':
-            valores = st.multiselect("Selecciona valores", df[filtro].unique())
-            df_filtrado = df[df[filtro].isin(valores)]
+def filtros(df):
+    st.subheader("Filtros")
+    st.write("Añade filtros al Dataframe")
+    modo = st.selectbox("Modo",['Ordenar','Agrupar','Filtrar'])
+    if modo is not None:
+        if modo == "Ordenar":
+            orden = st.selectbox("Columna a ordenar",df.columns)
+            df_ordenado = df.sort_values(by=orden,ascending=False)
+            st.dataframe(df_ordenado)
+            nombre = st.text_input("Nombre del archivo", "datos_filtrados")
+            csv = df_ordenado.to_csv(index=False).encode("utf-8")
+            st.download_button(
+                label="Descargar CSV",
+                data=csv,
+                file_name=f"{nombre}.csv",
+                mime="text/csv"
+            )
+        elif modo=="Agrupar":
+            grupo = st.selectbox("Columna por agrupar",df.columns)
+            agregacion = st.selectbox("Agregación", ["count", "mean", "sum"])
+            df_agrupado = df.groupby(grupo)[["Ki_num", "MaxKi_num"]].agg(agregacion).reset_index()
+            st.dataframe(df_agrupado)
+            nombre = st.text_input("Nombre del archivo", "datos_filtrados")
+            csv = df_agrupado.to_csv(index=False).encode("utf-8")
+            st.download_button(
+                label="Descargar CSV",
+                data=csv,
+                file_name=f"{nombre}.csv",
+                mime="text/csv"
+            )
         else:
-            min_val = float(df[filtro].min())  # Definimos el valor mínimo
-            max_val = float(df[filtro].max())  # Definimos el valor máximo
-            rango = st.slider("Selecciona rango", min_val, max_val,
-                            (min_val, max_val))  # Creamos slider con valor mínimo y máximo
-            df_filtrado = df[
-                (df[filtro] >= rango[0]) &
-                (df[filtro] <= rango[1])]  # Filtramos el dataframe
-        st.dataframe(df_filtrado)  # Mostramos el dataframe filtrado
-        nombre = st.text_input("Nombre del archivo", "datos_filtrados")
-        csv = df_filtrado.to_csv(index=False).encode("utf-8")
-        st.download_button(
-            label="Descargar CSV",
-            data=csv,
-            file_name=f"{nombre}.csv",
-            mime="text/csv"
-        )
+            st.subheader("Filtración de datos")
+            filtro = st.selectbox("Filtrar por", df.columns)
+            # Detectar tipos de datos
+            if df[filtro].dtype == 'object':
+                valores = st.multiselect("Selecciona valores", df[filtro].unique())
+                df_filtrado = df[df[filtro].isin(valores)]
+            else:
+                min_val = float(df[filtro].min())  # Definimos el valor mínimo
+                max_val = float(df[filtro].max())  # Definimos el valor máximo
+                rango = st.slider("Selecciona rango", min_val, max_val,
+                                (min_val, max_val))  # Creamos slider con valor mínimo y máximo
+                df_filtrado = df[
+                    (df[filtro] >= rango[0]) &
+                    (df[filtro] <= rango[1])]  # Filtramos el dataframe
+            st.dataframe(df_filtrado)  # Mostramos el dataframe filtrado
+            nombre = st.text_input("Nombre del archivo", "datos_filtrados")
+            csv = df_filtrado.to_csv(index=False).encode("utf-8")
+            st.download_button(
+                label="Descargar CSV",
+                data=csv,
+                file_name=f"{nombre}.csv",
+                mime="text/csv"
+            )
+def graficos(df):
+    st.subheader("Gráficos")
+    st.write("Generar gráficos")
+    tipo = st.selectbox("Tipo",['Barra','Líneas','Dispersión','Histograma'])
+    if tipo is not None:
+        if tipo == "Barra":
+            column1 = st.selectbox("Columna 1",df.columns)
+            column2 = st.selectbox("Columna 2",df.columns)
+            title = st.text_input("Título del Gráfico"," ")
+            fig = px.bar(df,column1,column2,title=title)
+            st.plotly_chart(fig)
+        elif tipo == "Líneas":
+            column1 = st.selectbox("Columna 1",df.columns)
+            column2 = st.selectbox("Columna 2",df.columns)
+            title = st.text_input("Título del Gráfico"," ")
+            fig = px.line(df,column1,column2,title=title)
+            st.plotly_chart(fig)
+        elif tipo == "Dispersión":
+            column1 = st.selectbox("Columna 1",df.columns)
+            column2 = st.selectbox("Columna 2",df.columns)
+            title = st.text_input("Título del Gráfico"," ")
+            fig = px.scatter(df,column1,column2,title=title)
+            st.plotly_chart(fig)
+        else:
+            column = st.selectbox("Columna",df.columns)
+            title = st.text_input("Título del Gráfico", " ")
+            fig = px.histogram(df,column,title=title)
+            st.plotly_chart(fig)
+
+
+            
 
 def main():
     st.title("Información de Dragon Ball")
@@ -148,14 +212,16 @@ def main():
         if st.session_state.mostrar_grafica:
             fig = graficar(df)
             st.plotly_chart(fig)
-        st.subheader("Filtros")
-        st.write("Añade filtros al Dataframe")
-        modo = st.selectbox("Modo",['Ordenar','Agrupar','Filtrar'])
-        if modo is not None:
-            filtros(modo)
+        filtros(df)
+        graficos(df)
+        
     else:
         st.subheader("Información Acerca de Planetas")
         st.write("En API de DB hay 10 planetas")
+        st.dataframe(df_planetas)
+        filtros(df_planetas)
+        graficos(df_planetas)
+
 
 if __name__ == "__main__":
     main()
