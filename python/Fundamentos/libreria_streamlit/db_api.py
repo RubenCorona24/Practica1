@@ -4,6 +4,7 @@ import plotly.express as px
 import requests
 import re
 
+st.set_page_config(page_title="Información Dragon Ball",initial_sidebar_state="collapsed")
 def obtener_datos(id):
     url = f"https://dragonball-api.com/api/characters/{id}"
     r = requests.get(url)
@@ -18,7 +19,8 @@ def obtener_datos(id):
         return nombre,ki,maxKi,descripcin,raza,genero
     else:
         return None
-    
+
+@st.cache_data
 def dataframe():
     lista = []  # acumulas aquí todos los personajes
     
@@ -78,7 +80,57 @@ def graficar(df):
     fig = px.bar(df_ordenado.head(10),'Nombre','Ki_num',title="Personajes más poderosos")
     return fig
 
-st.set_page_config(page_title="Información Dragon Ball")
+
+def filtros(modo):
+    if modo == "Ordenar":
+        orden = st.selectbox("Columna a ordenar",df.columns)
+        df_ordenado = df.sort_values(by=orden,ascending=False)
+        st.dataframe(df_ordenado)
+        nombre = st.text_input("Nombre del archivo", "datos_filtrados")
+        csv = df_ordenado.to_csv(index=False).encode("utf-8")
+        st.download_button(
+            label="Descargar CSV",
+            data=csv,
+            file_name=f"{nombre}.csv",
+            mime="text/csv"
+        )
+    elif modo=="Agrupar":
+        grupo = st.selectbox("Columna por agrupar",df.columns)
+        agregacion = st.selectbox("Agregación", ["count", "mean", "sum"])
+        df_agrupado = df.groupby(grupo)[["Ki_num", "MaxKi_num"]].agg(agregacion).reset_index()
+        st.dataframe(df_agrupado)
+        nombre = st.text_input("Nombre del archivo", "datos_filtrados")
+        csv = df_agrupado.to_csv(index=False).encode("utf-8")
+        st.download_button(
+            label="Descargar CSV",
+            data=csv,
+            file_name=f"{nombre}.csv",
+            mime="text/csv"
+        )
+    else:
+        st.subheader("Filtración de datos")
+        filtro = st.selectbox("Filtrar por", df.columns)
+        # Detectar tipos de datos
+        if df[filtro].dtype == 'object':
+            valores = st.multiselect("Selecciona valores", df[filtro].unique())
+            df_filtrado = df[df[filtro].isin(valores)]
+        else:
+            min_val = float(df[filtro].min())  # Definimos el valor mínimo
+            max_val = float(df[filtro].max())  # Definimos el valor máximo
+            rango = st.slider("Selecciona rango", min_val, max_val,
+                            (min_val, max_val))  # Creamos slider con valor mínimo y máximo
+            df_filtrado = df[
+                (df[filtro] >= rango[0]) &
+                (df[filtro] <= rango[1])]  # Filtramos el dataframe
+        st.dataframe(df_filtrado)  # Mostramos el dataframe filtrado
+        nombre = st.text_input("Nombre del archivo", "datos_filtrados")
+        csv = df_filtrado.to_csv(index=False).encode("utf-8")
+        st.download_button(
+            label="Descargar CSV",
+            data=csv,
+            file_name=f"{nombre}.csv",
+            mime="text/csv"
+        )
 
 def main():
     st.title("Información de Dragon Ball")
@@ -87,9 +139,20 @@ def main():
         st.subheader("Información Acerca de Personajes")
         st.write("En la API, hay 58 personajes")
         st.dataframe(df)
-        if st.button("Graficas"): #Boton de graficar
+        if "mostrar_grafica" not in st.session_state:
+            st.session_state.mostrar_grafica = False
+
+        if st.button("Gráficas"):
+            st.session_state.mostrar_grafica = True
+
+        if st.session_state.mostrar_grafica:
             fig = graficar(df)
-            st.plotly_chart(fig) #Mostramos la figura
+            st.plotly_chart(fig)
+        st.subheader("Filtros")
+        st.write("Añade filtros al Dataframe")
+        modo = st.selectbox("Modo",['Ordenar','Agrupar','Filtrar'])
+        if modo is not None:
+            filtros(modo)
     else:
         st.subheader("Información Acerca de Planetas")
         st.write("En API de DB hay 10 planetas")
