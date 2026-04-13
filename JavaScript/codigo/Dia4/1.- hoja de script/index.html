@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Calculadora de propinas</title>
+    <link rel="stylesheet" href="estilosCalculadora.css">
+</head>
+<body>
+    
+    <h1>Calculadora de propinas</h1>
+    <h2>Ingresa la información para calcular propina</h2>
+    <br><br>
+    <p>Total de cuenta</p>
+    <input type="number" id="totalCuenta" value="0">
+    <br><br>
+    <p>¿Qué porcentaje de propina desea proporcionar?</p>
+    <input type="number" id="porcentajePropina" value="0">
+    <br><br><br>
+    <button onclick="calcularPropina()">Calcular Propina</button>
+    <br><br>
+    <p>PROPINA CALCULADA</p>
+
+    <p id="propina" class="resultado">$00.00</p>
+    <br><br><br>
+    <p>Total a Pagar</p>
+    <p id="totalPagar" class="resultado">$00.00</p>
+    <br><br><br>
+    <button onclick="reiniciar()">Reiniciar Datos</button>
+    <script src="misScripts.js"></script> <!--Archivo de JavaScript-->
+</body>
+</html>

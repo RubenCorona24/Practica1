@@ -1,0 +1,21 @@
+body{
+    background-color: bisque;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+}
+h1{
+    text-decoration: double;
+}
+p{
+    color: brown;
+}
+button{
+    background-color: black;
+    color: white;
+    border: 5px;
+    border-color: aliceblue;
+}
+.resultado{
+    background-color: burlywood;
+    color: black;
+}
