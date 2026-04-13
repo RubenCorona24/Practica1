@@ -201,7 +201,11 @@ def main():
     seccion = st.sidebar.selectbox("Sección",['Personajes','Planetas'])
     if seccion == "Personajes": #Sección de personajes
         st.subheader("Información Acerca de Personajes")
-        st.write("En la API, hay 58 personajes")
+        #Agregamos columnas para las métricas
+        col1,col2,col3 = st.columns(3)
+        col1.metric("Total de personajes",len(df))
+        col2.metric("Razas únicas",df['Raza'].nunique())
+        col3.metric("Más poderoso 🔥",df.loc[df["MaxKi_num"].idxmax(),"Nombre"])
         st.dataframe(df)
         if "mostrar_grafica" not in st.session_state:
             st.session_state.mostrar_grafica = False
@@ -217,7 +221,10 @@ def main():
         
     else:
         st.subheader("Información Acerca de Planetas")
-        st.write("En API de DB hay 10 planetas")
+        col1,col2,col3 = st.columns(3)
+        col1.metric("Total de planetas 🌍",len(df_planetas))
+        col2.metric("Planetas destruidos 💥",df_planetas['Destruido'].sum())
+        col3.metric("Planetas existentes ✅",(~df_planetas["Destruido"]).sum())
         st.dataframe(df_planetas)
         filtros(df_planetas)
         graficos(df_planetas)

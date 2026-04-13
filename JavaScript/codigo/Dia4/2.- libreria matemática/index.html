@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math</title>
+</head>
+<body>
+    <h1>Funciones principales de la librería Math</h1>
+    <h2>Math dispone de una variedad de funciones como las siguientes</h2>
+    <p>Potenciar un número: Elige un número a potenciar y su exponente</p>
+    <br><p>Base</p>
+    <input type="num" id="numeroBase">
+    <p>exponente</p>
+    <input type="number" id="numeroExponente"> <br><br>
+    <button onclick="sacarPotencia()">RESULTADO</button>
+    <p id="resultadoPotenciar"></p>
+
+    <script>
+        //Función para potenciar número
+        function potenciar(base,exponente){
+            return Math.pow(base,exponente)
+        }
+        //Función para sacar raíz cuadrada
+        function sacarRaiz(numero){
+            return Math.sqrt(numero)
+        }
+        //Función para sacar valor absoluto
+        function valorAbsoluto(numero){
+            return Math.abs(numero)
+        }
+        //Función para sacar circunferencia
+        function calcularCircunferencia(diametro){
+            return Math.PI * diametro
+        } 
+        //Función para redondear número
+        function redondearNumero(numero){
+            return Math.round(numero)
+        }
+        let elementoBase = document.getElementById("numeroBase")
+        let elementoExponente = document.getElementById("numeroExponente")
+        let elementoResultado = document.getElementById("resultadoPotenciar")
+        function sacarPotencia(){
+             let resultado = potenciar(elementoBase.value,elementoExponente.value)
+             elementoResultado.textContent = "El resultado es: " + resultado 
+        }
+        
+    </script>
+</body>
+</html>

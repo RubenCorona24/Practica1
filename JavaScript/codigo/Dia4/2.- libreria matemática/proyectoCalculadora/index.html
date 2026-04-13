@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <h1>Calculadora de operaciones básicas</h1>
+    <p>Introduce los valores y con los botones calcula el resultado, en caso de raiz y abs, introduce solamente el segundo input</p>
+    <input type="number" id="num1"><input type="number" id="num2">
+    <br><br><br>
+    <div  class="Calculadora">
+    <button onclick="sumar()">+</button><button onclick="restar()">-</button>
+    <button onclick="multiplicar()">X</button>
+    <button onclick="dividir()">÷</button><br>
+    <button onclick="sacarRaiz()">√</button>
+    <button onclick="sacarPotencia()">^</button>
+    <button onclick="sacarAbsoluto()">ABS</button>
+    <button onclick="sacarRandom()">Random</button>
+    <br><br><br>
+    <button onclick="redondearNumero()">Round</button>
+    <button onclick="redondearAlPiso()">Floor</button>
+    <button onclick="redondearArriba()">Ceil</button>
+    </div>
+    <br><br><br>
+    <h2>Resultado: <span id="resultado">---</span></h2>
+    <script src="Script.js"></script>
+</body>
+</html>

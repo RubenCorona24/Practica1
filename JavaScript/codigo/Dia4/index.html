@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funciones</title>
+</head>
+<body>
+    <p>Elige el primer número: </p>
+    <input type="number" id="numero1">
+    <p>Elige el segundo número: </p>
+    <input type="number" id="numero2"><br><br>
+    <button onclick="mostrarResultado()">Calcular</button>
+    <h2 id="resultado"></h2>
+    <script>
+        function sumar(num1,num2){
+            let resultado = +num1+ +num2
+            return resultado //devolvemos el resultado
+        }
+        function mostrarResultado(){
+            let elemento1 = document.getElementById("numero1")
+            let elemento2 = document.getElementById("numero2")
+            let elementoResultado = document.getElementById("resultado")
+            let resultado = sumar(elemento1.value,elemento2.value) //función sumar
+            elementoResultado.textContent = resultado;
+        }
+        
+    </script>
+</body>
+</html>
