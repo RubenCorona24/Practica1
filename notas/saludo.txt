@@ -1,2 +1,0 @@
-Hola, bienvenido al curso de python
-este es otra modificación desde el editor de texto de Python.
