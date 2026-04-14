@@ -43,7 +43,7 @@ def ver_imagen(array_predicciones,etiqueta_real,img):
     plt.xticks([])
     plt.yticks([])
     plt.imshow(img,cmap=plt.cm.binary)
-    #Mostrar etiqueta predicha
+    #Mostrar etiqueta predicha  
     etiqueta_predicha = np.argmax(array_predicciones)
     if etiqueta_predicha==etiqueta_real:
         color='green'

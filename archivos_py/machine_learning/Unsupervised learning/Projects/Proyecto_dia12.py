@@ -94,7 +94,7 @@ def hierarchical_clustering():
 def menu():
     while True:
         print("-------BIENVENIDO AL MENÚ DE CLASIFICACIÓN DE CLIENTEES---------")
-        print("Tienes 4 opciones para visualuización de datos:\n1: Ver estadísticas generales\n2:Visuañizar componentes principales de PCA\n3: Visualizar los centroides y los componentes principales de KMeans\n4: Visualizar el dendrograma del Clustering Jerárquico\n5: Ver los primeros y últimos 10 filas del DataFrame\n6: Salir del programa ")
+        print("Tienes 4 opciones para visualización de datos:\n1: Ver estadísticas generales\n2: Visualizar componentes principales de PCA\n3: Visualizar los centroides y los componentes principales de KMeans\n4: Visualizar el dendrograma del Clustering Jerárquico\n5: Ver los primeros y últimos 10 filas del DataFrame\n6: Salir del programa ")
         elige = int(input("Elige tu opción: "))
         if elige == 1:
             print("Opción de Ver Estadísticas generales")

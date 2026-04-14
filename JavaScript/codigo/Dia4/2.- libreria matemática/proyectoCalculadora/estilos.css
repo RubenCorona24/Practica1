@@ -8,10 +8,19 @@ h1{
 
 .Calculadora{
     background-color: black;
+    border-color: aliceblue;
+    border: 10px;
+    width: 160px;
 }
 
 button{
     color: black;
     background-color: white;
+}
+
+.reiniciar{
+    color: red;
+    background-color: white;
+    height: 40px;
 }
 
