@@ -1,0 +1,56 @@
+><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba</title>
+    <style>
+        body{
+            background-color: beige;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        h1{
+
+            color: red;
+            text-align: center; 
+        }
+        p{
+            color: blue;       
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mi primera web</h1>
+    <h2>Ingresa tu nombre</h2>
+    <input type="text" id="nombreUsuario">
+    <h2>Ingresa tu edad</h2>
+    <input type="number" id="edadUsuario">
+    <button onclick="MostrarInformacion()">Mostrar Información</button>
+    <p id="mensaje">Mensaje:... </p>
+    <audio id="alarma">
+        <source src="alarma.mp3" type="audio/mpeg">
+    </audio>
+    <script>
+        let elementoNombre = document.getElementById("nombreUsuario")
+        let edadUsuario = document.getElementById("edadUsuario")
+        let contenidoTexto = document.getElementById("mensaje")
+        let elementoAlarma = document.getElementById("alarma")
+        function MostrarInformacion(){
+            contenidoTexto.textContent = "Mensaje: Te llamas "+ elementoNombre.value + " y tienes "+edadUsuario.value+" años"
+
+        }
+        function resetear(){
+            contenidoTexto.textContent = "Mensaje:..."
+            edadUsuario.value = " "
+            elementoNombre.value = " "
+            elementoAlarma.play(); //hacemos sonar la alarma
+            alert("Ingresos actualizados, por favor vuelve a llenar los campos")
+            
+
+        }
+        setTimeout(resetear,1000*20)
+
+    </script>
+</body>
+</html>

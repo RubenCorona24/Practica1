@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <title>Proyecto día 3</title>
+</head>
+<body onload="EmpezarTiempo()">
+    <h1>Bienvenido al juego del ahorcado</h1>
+    <h2>Responde las 5 preguntas planteadas en menos de 30 segundos</h2>
+    <h2 id="cuenta">00:00</h2>
+    <p>Pregunta 1: ¿Cuál es la capital de México?</p>
+    <input type="text" id="respuesta1">
+    <br>
+    <p>Pregunta 2: ¿Cuál es el oceano más grande del mundo?</p>
+    <input type="text" id="respuesta2">
+    <br>
+    <p>Pregunta 3: ¿Cuánto es 20 x 12?</p>
+    <input type="number" id="respuesta3">
+    <br>
+    <p>Pregunta 4: ¿Cuánto es 17 x 11?</p>
+    <input type="number" id="respuesta4">
+    <br>
+    <p>Pregunta 5: Nombre del creador de Amazon</p>
+    <input type="text" id="respuesta5">
+    <br><br><br>
+    <button onclick="enviarRespuestas()">Enviar Respuestas</button>
+    <br><br> <button onclick="reiniciarJuego()">Reiniciar Juego</button>
+    <audio id="audio">
+        <source src="alarma.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        //Sitio weh: 30 segudnos
+        //Responder 5 pregunts
+        //si falla alert("Game over") + Boton "reiniciar"
+        //si logra: alert(fecha actual y respuesta) + boton "listo"
+        let elementoRespuesta1 = document.getElementById("respuesta1");
+        let elementoRespuesta2 = document.getElementById("respuesta2");
+        let elementoRespuesta3 = document.getElementById("respuesta3");
+        let elementoRespuesta4 = document.getElementById("respuesta4");
+        let elementoRespuesta5 = document.getElementById("respuesta5");
+        let elementoCuenta = document.getElementById("cuenta");
+        let juegoTerminado = false;
+        let tiempoRestante = 30;
+        let intervalo;
+        let elementoAudio = document.getElementById("audio")
+        function enviarRespuestas(){
+            let fechaActual = new Date();
+    alert("Has completado las respuestas: " + fechaActual.getFullYear());
+}
+
+// ✅ Bien:
+function enviarRespuestas() {
+    if (juegoTerminado) return;
+
+    let r1 = elementoRespuesta1.value.trim().toLowerCase();
+    let r2 = elementoRespuesta2.value.trim().toLowerCase();
+    let r3 = elementoRespuesta3.value.trim();
+    let r4 = elementoRespuesta4.value.trim();
+    let r5 = elementoRespuesta5.value.trim().toLowerCase();
+
+    let correctas = 
+        r1 === "ciudad de méxico" &&
+        r2 === "pacífico" &&
+        r3 === "240" &&
+        r4 === "187" &&
+        r5 === "jeff bezos";
+
+    clearInterval(intervalo);
+    juegoTerminado = true;
+
+    if (correctas) {
+        let fechaActual = new Date();
+        alert("✅ ¡Correcto! Completado el: " + fechaActual.toLocaleDateString());
+    } else {
+        alert("❌ Algunas respuestas son incorrectas. ¡Intenta de nuevo!");
+    }
+        }
+        function actualizarTiempo(){
+            if (juegoTerminado) return;
+
+        let segundos = String(tiempoRestante).padStart(2, "0");
+
+        elementoCuenta.textContent = "00:" + segundos;
+
+        tiempoRestante--;
+
+    if (tiempoRestante < 0){
+        terminarSesion();
+    }
+        }
+        function EmpezarTiempo(){
+            intervalo = setInterval(actualizarTiempo,1000)
+        }
+        function terminarSesion(){
+            if (juegoTerminado) return;
+
+    juegoTerminado = true;  
+
+    clearInterval(intervalo);
+    elementoAudio.play(); //Reproducimos sonidos
+    elementoCuenta.style.color = "red";
+
+    alert("⏰ Se terminó el tiempo!");
+            
+            
+
+        }
+        function reiniciarJuego(){
+            
+            clearInterval(intervalo)
+
+            tiempoRestante = 30;
+            juegoTerminado = false;
+
+            elementoCuenta.style.color = "black";
+            elementoRespuesta1.value = "";
+            elementoCuenta.textContent = "00:30";
+            elementoRespuesta2.value = "";
+            elementoRespuesta3.value = "";
+            elementoRespuesta4.value = "";
+            elementoRespuesta5.value = "";
+
+            EmpezarTiempo();
+        }
+    </script>
+</body>
+</html>

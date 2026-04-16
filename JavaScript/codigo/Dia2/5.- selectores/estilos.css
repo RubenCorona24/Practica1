@@ -1,0 +1,22 @@
+body{
+    background-color: bisque;
+}
+
+.principal{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#Informacion{
+    text-align: center;
+}
+a[href*=".org"]{
+    background-color: greenyellow;
+}
+
+h1:hover{
+    color: red;
+}
+
+.principal::first-line{
+    background-color: lightgray;
+}

@@ -1,0 +1,45 @@
+h1{
+    background-color: aqua;
+    text-align: center;
+}
+.principal{
+    background-color: aquamarine;
+    color: red;
+    text-align: center;
+}
+body{
+    background-color: bisque;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.subtitulos{
+    color:brown;
+}
+
+
+div{
+    background-color: chartreuse;
+}
+
+span{
+    font-size: larger;
+    font-style: italic;
+    text-decoration: underline;
+}
+
+a[href]:hover{
+    background-color:cyan;
+}
+#anuncio{
+    background-color: beige;
+}
+
+#retorno{
+    background-color: beige;
+}
+
+.imagenes{
+    border: 7px;
+    border-style: solid;
+    border-color: beige;
+}

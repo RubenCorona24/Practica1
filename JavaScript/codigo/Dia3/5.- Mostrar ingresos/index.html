@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<head>
+    <title>Tipos de datos</title>
+</head>
+<body>
+    <p>Ingresa tu nombre</p>
+    <input type="text" id="nombreUsuario">
+    <button onclick="mostrarNombre()">Ingresar</button>
+    <h1 id="Salida">Nombre desconocido</h1>
+    <script>
+        function mostrarNombre(){
+            let elementoNombre = document.getElementById("nombreUsuario")
+            let elementoTexto = document.getElementById("Salida")
+            elementoTexto.textContent = "Tu te llamas "+elementoNombre.value
+        }
+    </script>
+</body>
+</html>

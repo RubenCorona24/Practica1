@@ -1,0 +1,13 @@
+p{
+    text-align: center;
+}
+
+.normal{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+.destacado{
+    background-color: khaki;
+    padding: 20px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<head>
+    <title>Ingreso de Usuario</title>
+</head>
+<body>
+    <h2>Ingresa tu usuario</h2>
+    <input type="text" id="nombreUsuario">
+    <button onclick="saludarUsuario()">Presentar</button>
+    <script>
+        function saludarUsuario(){
+            let miNombre = document.getElementById("nombreUsuario").value;
+            alert("Hola " + miNombre)
+        }
+    </script>
+</body>
+</html>
