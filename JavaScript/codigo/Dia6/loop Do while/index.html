@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loop Do While</title>
+</head>
+<body>
+    
+    <script>
+        let vidas = 5;
+        do{
+            console.log("Vidas: "+vidas)
+            vidas--
+        } while (vidas>=0)
+
+        //otro ejemplo de loop do while
+        let nombre;
+        do{
+            nombre = prompt("Nombre del Usuario");
+        } while (nombre!="Ruben");
+        //Cuando el bucle se rompa sigue el código
+        document.write("<h1>Usuario correcto!</h1>")
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Resumen de Calificaciones Estudiante</h1>
+    <h2>Calificaciones Generales del Estudiante</h2>
+    <ul id="listaCalificaciones" class="lista">
+    </ul>
+    <button onclick="mostrarLista()">Mostrar Boleta de Calificaciones</button>
+    <button onclick="sacarPromedio()">Mostrar Promedio </button>
+    <button onclick="obtenerNotaAlta()">Obtener nota más alta</button>
+    <button onclick="establecerAplazos()">Establecer aplazos</button>
+    <h2 id="promedio" class="info"></h2>
+    <h2 id="notaAlta" class="info"></h2>
+    <h2 id="aplazo" class="info"></h2>
+    <button onclick="reestablecer()">Limpiar información</button>
+    <script src="script.js"></script>
+</body>
+</html>

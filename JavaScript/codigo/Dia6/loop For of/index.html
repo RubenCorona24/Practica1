@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loop For of</title>
+</head>
+<body>
+    <script>
+    //creamos un elemento iterable (lista,string,array,etc)
+    let lista = [1,2,3,4,5]
+    //iteramos con el loop "for of"
+    for (let numero of lista){
+        document.write("Este es el número "+numero + "<br>") //imprime el número
+    }
+    //otro ejemplo de loop for of
+    let miArray = [5, 9, 6, 4, 8];
+    let suma = 0;
+
+    function testLoop() {
+        for (let n of miArray){
+            suma = suma + n
+        }
+    }
+    </script>
+</body>
+</html>
