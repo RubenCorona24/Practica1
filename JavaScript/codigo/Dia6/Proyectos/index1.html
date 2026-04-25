@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validador de contraseña</title>
+</head>
+<body>
+    <h1>Bienvenido al Validador de Contraseña</h1>
+    <h2>La contraseña debe contener las siuguientes características: </h2>
+    <ol>
+        <li>Tener al menos 8 carácteres</li>
+        <li>Tener números</li>
+        <li>Tener mayúsculas</li>
+    </ol>
+    <p>Inserta tu contraseña</p>
+    <input id="contraseña" type="password" value="0">
+    <button onclick="validarContraseña()">Validar Contraseña</button>
+    <p id="tieneLongitud"></p>
+    <p id="tieneNumeros"></p>
+    <p id="tieneMayusculas"></p>
+    <h2 id="resultado"></h2>
+</body>
+</html>
