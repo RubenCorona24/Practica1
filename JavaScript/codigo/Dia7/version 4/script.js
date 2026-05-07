@@ -25,50 +25,55 @@ function crearTiendas(contenedorID, min, cantidadTiendas) {
     }
 }
 
-function extraerNumero(elemento) {
-    let miElemento = document.getElementById(elemento)
-    let miNumero = parseInt(miElemento.value)
-    return miNumero
+function extraerNumero(elemento){
+    let miTexto = elemento.value;
+    let miNumero = parseInt(miTexto)
+    return miNumero //Retornamos el número
 }
-
-function calcular() {
+function calcular(){
     let ventas = []
-    // ✅ solo 5 tiendas, consistente con crearTiendas
-    for (let i = 1; i <= 5; i++) {
-        ventas.push(extraerNumero("ventasTienda" + i))
+    let posicionVentas = 0;//inicializamos en 0
+    let elementoVentas = document.getElementById("itemsTiendas") //extraemos elemento tiendas
+    for (let item of elementoVentas.children){
+        let valorVenta = extraerNumero(item.children[1]) 
+        ventas[posicionVentas] = valorVenta
+        posicionVentas = posicionVentas + 1
     }
-
-    let totalVentas = sumarTotal(ventas)
+    //hacemos suma
+    let totalVentas = sumarTotal(vantas)
     let ventaMayor = sacarMayor(ventas)
     let ventaMenor = sacarMenor(ventas)
-
-    let mensajeSalida = "Total Ventas: " + totalVentas +
-        " / Venta Mayor: " + ventaMayor +
-        " / Venta Menor: " + ventaMenor
-
-    document.getElementById("parrafoSalida").textContent = mensajeSalida
+    let mensajeSalida = "Total Ventas: "+totalVentas +
+        " / Venta Mayor: "+ventaMayor+
+        " / Venta Menor: "+ventaMenor
+    let elementoSalida = document.getElementById("parrafoSalida")
+    elementoSalida.textContent = mensajeSalida
 }
-
+//función de sumar (obtener total)
 function sumarTotal(array) {
-    let total = 0
-    for (let venta of array) {
-        total = total + venta
+    let total = 0;
+    for (let venta of array){
+        total = total+venta; //vamos sumando
     }
-    return total
-}
+    return total;
+}   
 
-function sacarMayor(array) {
+function sacarMayor(array){
     let maximo = array[0]
-    for (let venta of array) {
-        if (venta > maximo) maximo = venta
+    for(let venta of array){
+        if (venta>maximo){
+            maximo = venta; //se reescribe la venta mayor
+        }
     }
     return maximo
 }
 
-function sacarMenor(array) {
+function sacarMenor(array){
     let menor = array[0]
-    for (let venta of array) {
-        if (venta < menor) menor = venta
+    for(let venta of array){
+        if (venta<menor){
+            menor = venta; //se reescribe la venta mayor
+        }
     }
     return menor
 }

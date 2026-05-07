@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototipos</title>
+</head>
+<body>
+    
+    <script>
+        let perro = {nombre: "Crispin"};
+        let perro1 = Object.create(perro) //heredamos de "perro"
+        //-----Cadena de prototipos en detalle-----
+        function Libro(autor,titulo,cantPaginas){
+            this.autor = autor;
+            this.titulo = titulo;
+            this.cantPaginas= cantPaginas
+        } //constructor Libro
+        let libro1 = new Libro("Stephen King","Carrie",521) //instancia de objeto Libro
+        //Objetos prototipos
+        //Modificar prototipos
+         //1.- agrega Objeto.prototype.propiedad = valor
+         Libro.prototype.abrirLibro = function(){
+            console.log("El libro "+this.titulo + " ha sido abierto")
+         }
+         //Definir propiedades en el constructor y métodos en el prototipo
+         function UnObjeto(a){
+            this.a = a;
+         }
+         UnObjeto.prototype.metodo1 = function(){}
+         UnObjeto.prototype.metodo2 = function(){}
+    </script>
+</body>
+</html>

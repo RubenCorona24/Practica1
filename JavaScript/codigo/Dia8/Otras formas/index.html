@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //creamos objetos de diferentes formas
+        //1.-
+        let coche1 = new Object();
+        coche1.marca = "Nissan";
+        console.log("Marca de coche: "+coche1.marca)
+        let automovil1 = { 
+    marca: 'Ford', 
+    modelo: 'Fiesta', 
+    anio: 2015, 
+    arrancar() { console.log("En marcha") }
+};
+
+let automovil2 = new Object(automovil1)
+    </script>
+</body>
+</html>

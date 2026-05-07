@@ -1,0 +1,22 @@
+body{
+    background-color: burlywood;
+    margin-left: 2rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+h1{
+    text-align: center;
+    color: blue;
+}
+label{
+    text-decoration: double;
+    text-transform: uppercase;
+}
+button{
+    background-color: black;
+    color: azure;
+    border: 10px;
+}
+input{
+    height: 20px;
+    width: 100px;
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //creamos un constructor "Perro"
+        function Perro(raza,edad,nombre){
+            this.patas = 4;
+            this.raza = raza;
+            this.edad = edad;
+            this.nombre = nombre;
+            this.ladrar = function(){
+                console.log("Guau") //método
+            }
+        }
+        //creamos instancias del constructor
+        let crispin = new Perro() //empezamos con "new"
+        //creamos otro constructor
+        function Automovil(){
+        this.marca = "Ford",
+        this.modelo = "Fiesta",
+        this.anio = 2015,
+        this.arrancar = function(){
+            console.log("En marcha")
+    }
+}
+    //creamos constructor tipo empleado
+    function Empleado(nombre,apellido,cargo){
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.cargo = cargo;
+        this.presentarse = function(){
+            console.log("Mi nombre es "+this.nombre+" "+this.apellido+" y tengo el cargo de "+this.cargo)
+        }
+    }
+    </script>
+</body>
+</html>

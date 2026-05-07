@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loop For In</title>
+</head>
+<body>
+    
+    <script>
+        function Perro(raza,edad,nombre){
+            this.patas = 4;
+            this.raza = raza;
+            this.edad = edad;
+            this.nombre = nombre;
+            this.ladrar = function(){
+                console.log("Guau") //método
+            }
+        }
+        //creamos instancia perro
+        let perro1 = new Perro('Cruza',2,"Crispin")
+        //loop for in (por propiedad en...)
+        for (let propiedad in perro1){
+            console.log(propiedad + ": "+perro1[propiedad])
+        }
+
+    </script>
+</body>
+</html>

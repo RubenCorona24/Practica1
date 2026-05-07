@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <h1>Registro de Empleados</h1>
+    <h2>Bienvenido, completa los campos solicitados</h2>
+    <label for="legajo">Legajo</label>
+    <input type="text" id="legajo">
+    <br><br>
+    <label for="nombre">Nombre</label>
+    <input type="text" id="nombre">
+    <br><br>
+    <label for="apellido">Apellido</label>
+    <input type="text" id="apellido">
+    <br><br>
+    <label for="fechaNacimiento">Fecha de Nacimento</label>
+    <input type="text" id="fechaNacimiento">
+    <br><br>
+    <label for="cargo">Cargo</label>
+    <input type="text" id="cargo">
+    <br><br><br>
+    <button onclick="cargarEmpleado()">Cargar Empleado</button>
+    <br><br>
+    <button onclick="mostrarEmpleados()">Mostrar Empleados</button>
+    <br><br>
+    <button onclick="resetear()">Limpiar campos</button>
+    <script src="script.js"></script>
+</body>
+</html>
