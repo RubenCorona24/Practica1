@@ -19,7 +19,7 @@ let auto3 = new Automovil("SEAT","Toledo","Negro","2015","Agencia")
 //vender automovil(titular)
 Automovil.prototype.vender = function(titular){
     this.titular = titular
-    console.log("El coche de marca "+this.marca+" es propiedad de "+this.titular)
+    alert("El coche de marca "+this.marca+" es propiedad de "+this.titular)
 }
 //ver auto string: marca modelo - anio - titular
 Automovil.prototype.verAuto = function(){
@@ -45,12 +45,38 @@ function verRegistros(){
         lista.appendChild(li) //agregamos elemento a la lista
     }
 }
-function encender(coche){
-    //elementos
-    let coche = document.getElementById("carro")
-    if (coche != ""){
-        coche.encender()
-    }else{
-        alert("Seleccionar coche")
+function encender(){
+    {
+    let input = document.getElementById("carro");
+    let valor = input.value.trim();
+
+    if (valor === "") {
+        alert("Seleccionar coche");
+        return;
+    }
+
+    // Buscamos el auto en el array por marca (o lo que el input represente)
+    let auto = automoviles.find(a => a.marca.toLowerCase() === valor.toLowerCase());
+
+    if (auto) {
+        auto.encender(); // ✅ llamamos el método del prototipo
+    } else {
+        alert("No se encontró el automóvil");
+    }
+}
+}
+
+
+function vender(){
+    let propietario = document.getElementById("propietario").value.trim()
+    let coche = document.getElementById("carro").value.trim()
+
+    // Buscar el objeto en tu array de carros
+    let carroEncontrado = automoviles.find(c => c.modelo === coche)  // ← buscar el objeto
+
+    if (carroEncontrado) {
+        alert(carroEncontrado.vender(propietario))  // ← llamar método del objeto
+    } else {
+        alert("⚠️ Carro no encontrado")
     }
 }

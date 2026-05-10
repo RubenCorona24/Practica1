@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getters y Setters</title>
+</head>
+<body>
+    
+    <script>
+        //Para declarar subclases tenemos que poner "extends" después de la clase principals
+        class Deportista{
+            constructor(nombre,apellido){
+                this.nombre = nombre;
+                this.apellido = apellido
+            }
+        } //creamos clase deportista
+
+        Deportista.prototype.saludar = function(){
+            console.log("Hola, mi nombre es "+this.nombre+"!")
+        }
+        //creamos subclase futbolista
+        class Futbolista extends Deportista{
+            constructor(nombre,apellido,goles){
+                super(nombre,apellido) //metodo super 
+                //solo definimos el nuevo atributo "goles"
+                this._goles = goles
+            }
+            //establecemos getter para obtener cantidad de goles
+            get goles(){
+                return this._goles
+            }
+            //establecemos setter para nueva cantidad de goles
+            set goles(nuevoGoles){
+                this._goles = nuevoGoles;
+            } 
+        }
+    </script>
+</body>
+</html>
