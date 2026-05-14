@@ -4,12 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Veterinaria</title>
+    <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
     <h1>Registro de Veterinaria</h1>
+    <h2>Encuentra Información en nuestra Veterinaria!!</h2>
     <button onclick="mostrarAnimales()">Mostrar Animales</button>
-
-    <div id="contenedorPerro"></div><ul id="listaPerro"></ul>   <ul id="listaGato"></ul>  <ul id="listaConejo"></ul>
+    <br><br>
+    <button onclick="resetearInfo()">Resetear Información</button>
+    <br><br>
+    <div id="info"><p>En nuestra veterinaria contamos con cientos de animales y mascotas en cuidados especiales, puedes
+        venir en confianza ya que en este lugar cuidamos de su integridad y salud, a continuación, puedes acceder a la Información
+        de nuestras mascotas disponibles, si es de tu agrado uno de ellos contáctanos en nuestro número de teléfono <span>551893844</span>
+        o bien en nuestro correo electrónico <a href="https://github.com/">Accede a nuestro GitHub</a>
+    </p></div>
+    <div id="contenedorPerro">
+        <ul id="listaPerro"></ul></div>  
+    <div id="contenedorGato">
+        <ul id="listaGato"></ul>
+    </div>  
+    <div id="contenedorConejo">
+        <ul id="listaConejo"></ul>
+    </div>
     
     <script src="script.js"></script>
 </body>
