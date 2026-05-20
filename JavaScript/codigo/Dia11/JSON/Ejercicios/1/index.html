@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+<body>
+    <ul id="listaClientes"></ul>
+    <script>
+        //acceder a los usuarios 
+        fetch("datos.json")
+        .then(response => response.json())
+        .then(data => {
+            //acceder a la lista de html
+            let elementoLista = document.getElementById("listaClientes")
+            //creamos elemento li
+            for (let cliente of data){
+                let li = document.createElement("li")
+                li.textContent = "Producto: "+cliente.nombre+" - Precio: "+cliente.precio+" - Categoría: "+cliente.categoria
+                elementoLista.appendChild(li)
+            }
+        })
+    </script>
+</body>
+</html>

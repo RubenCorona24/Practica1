@@ -1,0 +1,15 @@
+body{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color: bisque;
+}
+h1{
+    text-align: center;
+    color: brown;
+    background-color: gray;
+}
+#numCuenta{
+    color: red;
+}
+h2{
+    text-align: center;
+}

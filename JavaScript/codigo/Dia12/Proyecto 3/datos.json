@@ -1,0 +1,12 @@
+{
+    "data": [
+        {"nombre": "Laptop Dell", "precio": 15000, "categoria": "Tecnología", "descripcion": "Laptop Dell Inspiron 15, 16GB RAM, 512GB SSD"},
+        {"nombre": "Mouse Logitech", "precio": 350, "categoria": "Tecnología", "descripcion": "Mouse inalámbrico con 3 años de batería"},
+        {"nombre": "Silla Gamer", "precio": 4500, "categoria": "Muebles", "descripcion": "Silla ergonómica con soporte lumbar ajustable"},
+        {"nombre": "Escritorio", "precio": 2800, "categoria": "Muebles", "descripcion": "Escritorio de madera 120x60cm"},
+        {"nombre": "Audífonos Sony", "precio": 1200, "categoria": "Tecnología", "descripcion": "Audífonos inalámbricos con cancelación de ruido"},
+        {"nombre": "Lámpara LED", "precio": 450, "categoria": "Hogar", "descripcion": "Lámpara de escritorio con 3 niveles de brillo"},
+        {"nombre": "Teclado Mecánico", "precio": 980, "categoria": "Tecnología", "descripcion": "Teclado mecánico RGB con switches Cherry MX"},
+        {"nombre": "Sofá 3 plazas", "precio": 8900, "categoria": "Muebles", "descripcion": "Sofá de tela gris con patas de madera"}
+    ]
+}

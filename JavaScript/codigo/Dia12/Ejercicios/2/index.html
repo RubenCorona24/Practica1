@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+</head>
+<body>
+    <h2>Escribe en el campo</h2>
+    <input id="input" type="text">
+    <h2 id="mensaje"></h2>
+</body>
+<script>
+    let input = document.getElementById("input")
+    let mensaje = document.getElementById("mensaje")
+    input.addEventListener("input",function(e){
+        let cantidadLetras = e.target.value.length
+        mensaje.textContent = "Cantidad de carácteres:u "+cantidadLetras
+        if (cantidadLetras>50){
+            mensaje.textContent = "Superaste los 50 carácteres";
+            mensaje.style.color = "red"
+        }else{
+            mensaje.style.color = "black"
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,12 @@
+{
+    "data": [
+        {"nombre": "Juan García", "telefono": "555-1234", "email": "juan@gmail.com"},
+        {"nombre": "Maria López", "telefono": "555-5678", "email": "maria@gmail.com"},
+        {"nombre": "Carlos Martínez", "telefono": "555-9012", "email": "carlos@gmail.com"},
+        {"nombre": "Ana Torres", "telefono": "555-3456", "email": "ana@gmail.com"},
+        {"nombre": "Luis Ramírez", "telefono": "555-7890", "email": "luis@gmail.com"},
+        {"nombre": "Jose Luis", "telefono": "535-3456", "email": "jose@gmail.com"},
+        {"nombre": "Karen Ruiz", "telefono": "554-3396", "email": "karen@gmail.com"}
+        
+    ]
+}

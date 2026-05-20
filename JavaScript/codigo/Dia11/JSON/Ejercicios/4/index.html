@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4</title>
+</head>
+<body>
+    <h1>Inspector de Usuarios</h1>
+    <h2>Ingresa el número de id del usuario deseado</h2>
+    <label for="idUsuario">idUser: </label>
+    <input type="number" id="idUsuario">
+    <button onclick="buscarUsuario()">Buscar Usuario</button>
+    <ul id="infoUsuario"></ul>
+    <script>
+        //accedemos a los datos de json con fetch
+        let usuarios = []
+        fetch("https://jsonplaceholder.typicode.com/users")
+        .then(response => response.json())
+        .then(data =>{
+            usuarios = data
+        })
+        .catch(error =>{
+            alert(error)
+        })
+        function buscarUsuario() {
+            let elementoLista = document.getElementById("infoUsuario")
+            let idUser = parseInt(document.getElementById("idUsuario").value)
+
+            elementoLista.innerHTML = ""  // ✅ limpiar antes
+
+            if (isNaN(idUser)) {
+                elementoLista.innerHTML = "<li>⚠️ Ingresa un número válido</li>"
+                return
+            }
+
+            // ✅ usar find en lugar de for — más limpio
+            let usuarioEncontrado = usuarios.find(u => u.id === idUser)
+
+            if (usuarioEncontrado) {
+                // mostrar solo propiedades simples
+                let propiedades = ["id", "name", "username", "email", "phone", "website"]
+                for (let prop of propiedades) {
+                    let li = document.createElement("li")
+                    li.textContent = prop + ": " + usuarioEncontrado[prop]
+                    elementoLista.appendChild(li)
+                }
+            } else {
+                elementoLista.innerHTML = "<li>❌ Usuario no encontrado</li>"
+            }
+        }
+    </script>
+</body>
+</html>

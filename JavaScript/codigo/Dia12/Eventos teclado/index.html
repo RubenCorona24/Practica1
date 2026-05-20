@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos del teclado</title>
+</head>
+<body>
+    <input type="text" id="campo">
+    <script>
+        let campo = document.getElementById("campo")
+        //addEventListener de verificar Número (no letras)
+        campo.addEventListener("keydown",function(e){
+            if (e.keyCode < 48 || e.keyCode > 57){
+                e.preventDefault();
+            }
+        })
+        //addEventListener de obtener la entrada completa del usuario
+        campo.addEventListener("keyup",function(e){
+            console.log("Entrada del usuario: "+e.target.value)
+        })
+        //addEventListener para obtener la tecla presionada
+        campo.addEventListener("keypress",function(e){
+            console.log("Caracter ingresado: "+event.key)
+        })
+    </script>
+</body>
+</html>

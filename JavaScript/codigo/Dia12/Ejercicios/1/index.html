@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        #contenedor {
+            width: 300px; /* Ancho del rectángulo */
+            height: 150px; /* Alto del rectángulo */
+            background-color: #3498db; /* Color de fondo */
+            border-radius: 8px; /* Opcional: bordes redondeados */
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio eventos 1-</title>
+</head>
+<body>
+    <button id="boton">Click aquí</button>
+    <div id="contenedor">
+         
+    </div>
+</body>
+<script>
+    let contenedor = document.getElementById("contenedor")
+    let nodeName;
+    let boton = document.getElementById("boton");
+    boton.addEventListener("click",function(event){
+        nodeName = event.target.nodeName
+        console.log(nodeName)
+    })
+    contenedor.addEventListener("mouseover",function(){
+        contenedor.style.color = "green"
+    })
+    contenedor.addEventListener("mouseout",function(){
+        contenedor.style.color = "white"
+    })
+
+</script>
+</html>
