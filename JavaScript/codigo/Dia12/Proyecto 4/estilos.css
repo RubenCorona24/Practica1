@@ -13,3 +13,11 @@ img{
     width: 200px;
     height: 200px;
 }
+#estado{
+    text-decoration: double;
+}
+
+button{
+    background-color: greenyellow;
+    color: green;
+}
