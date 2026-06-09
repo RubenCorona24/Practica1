@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promesas</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //Generamos nueva promesa con new Promise
+    let miPromesa = new Promise(function(resolve,reject){
+        setTimeout(function(){
+            let error = false;
+            if (error){
+                reject("La promesa ha fallado");
+            }else{
+                resolve("La promesa se ha cumplido")
+            }
+        })
+    })
+    miPromesa.then(resultado=>{
+        console.log(resultado)
+    }).catch(error=>{
+        console.log(error)
+    });
+
+    //Otro ejemplo con nueva promesa
+    let promesa1 = new Promise(function(resolve,reject){
+        setTimeout(resolve,2000,"Hola");
+    })
+    let promesa2 = new Promise(function(resolve,reject){
+        setTimeout(resolve,4000,"Mundo");
+    });
+
+    Promise.all([promesa1,promesa2]) //toma como parámetro a un array de promesas
+    .then(valores=>{
+        console.log(valores)
+    });
+    console.log("El código sigue su camino")
+
+    //Función de llamada a la API
+     function obtenerUsuarios(){
+        return new Promise(function(resolve,reject){
+            //creamos objeto tipo HTMLHttpsRequest
+            let xhr = new XMLHttpRequest();
+            xhr.open("GET","https://jsonplaceholder.typicode.com/users"); //abrir petición http
+            xhr.onload = function(){
+                if (xhr.status === 200){
+                    resolve(JSON.parse(xhr.responseText));
+                }else{
+                    reject(xhr.statusText);
+                }
+            }
+            xhr.send();
+        })
+     }
+     obtenerUsuarios()
+     .then(usuarios=>{
+        console.log(usuarios)
+     })
+     .catch(error=>{
+        console.error(error)
+     });
+</script>
+</html>

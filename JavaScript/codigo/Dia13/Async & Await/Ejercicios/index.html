@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios Async/Await</title>
+</head>
+<body>
+    <h1>Buscador de personajes Dragon Ball</h1>
+    <label for="idPersonaje">Id del personaje: </label>
+    <input type="number" id="idPersonaje">
+    <button id="btnBuscar">Buscar Personaje</button>
+    <hr>
+    <h3>Nombre del Personaje: <span id="spanName"></span></h3>
+    <h3>Ki: <span id="spanKi"></span></h3>
+    <h3>Raza : <span id="spanRaza"></span></h3>
+    <h3>Género: <span id="spanGenero"></span></h3>
+    <h3>Descripción del Personaje: <span id="spanDescripcion"></span></h3>
+    <img id="personajeImg" width="250">
+</body>
+<script>
+    let boton = document.getElementById("btnBuscar");
+    let nombre = document.getElementById("spanName")
+    let ki = document.getElementById("spanKi")
+    let raza = document.getElementById("spanRaza")
+    let genero = document.getElementById("spanGenero")
+    let descripcion = document.getElementById("spanDescripcion")
+    let imagen = document.getElementById("personajeImg");
+    // Ejercicios
+    async function datosDB(id) {
+        let res = await fetch("https://dragonball-api.com/api/characters/"+id);
+        let datos = await res.json();
+        return datos
+    }
+    boton.addEventListener("click",async function(){
+        let id = document.getElementById("idPersonaje").value; //extraemos input
+        let datos = await datosDB(id);
+        
+        nombre.textContent = datos.name
+        ki.textContent = datos.ki;
+        raza.textContent = datos.race;
+        genero.textContent = datos.gender;
+        descripcion.textContent = datos.description;
+        imagen.src = datos.image;
+        alert("Datos obtenidos")
+ 
+    })
+
+</script>
+</html>

@@ -4,14 +4,9 @@ let boton = document.getElementById("btnBuscar")
 let conteendor = document.getElementById("contenedor")
 
 //evento de input
-
 input.addEventListener("keydown", function(e) {
-    if (e.keyCode < 31 || e.keyCode > 128) {
-        if (e.key === "Backspace" || e.key === "Delete") {
-            return
-        } else {
-            e.preventDefault()
-        }
+    if ((e.keyCode < 65 || e.keyCode > 90) && e.keyCode != 32 && e.keyCode !=8){
+        e.preventDefault()
     }
 })
 

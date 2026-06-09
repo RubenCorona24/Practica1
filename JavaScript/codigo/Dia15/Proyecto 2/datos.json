@@ -1,0 +1,35 @@
+{
+  "tareas": [
+    {
+      "id": "1",
+      "titulo": "Limpiar la casa",
+      "estado": "completed"
+    },
+    {
+      "id": "2",
+      "titulo": "Programar",
+      "estado": "Incompleted"
+    },
+    {
+      "id": "3",
+      "titulo": "Matemáticas",
+      "estado": "incompleted"
+    },
+    {
+      "id": "4",
+      "titulo": "Arreglar issues",
+      "estado": "incompleted"
+    },
+    {
+      "id": "5",
+      "titulo": "Regar plantas",
+      "estado": "completed"
+    },
+    {
+      "id": "6",
+      "titulo": "Limpieza de hogar",
+      "estado": "completed"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

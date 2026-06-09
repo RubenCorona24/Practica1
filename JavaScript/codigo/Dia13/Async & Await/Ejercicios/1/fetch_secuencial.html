@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <h1>Información de Precio de dolar y Usuarios</h1>
+    <label for="inputMoneda">Euivalencia con moneda</label>
+    <select id="inputMoneda">
+        <option value="MXN">Peso Mexicano (MXN)</option>
+        <option value="EUR">Euro (EUR)</option>
+        <option value="GBP">Libra Esterlina (GBP)</option>
+        <option value="JPY">Yen Japonés (JPY)</option>
+        <option value="CAD">Dólar Canadiense (CAD)</option>
+    </select>
+    <button id="btnCalcular">Obtener Datos</button>
+    <p>1 USD dolar equivale a: <span id="moneda"></span></p>
+    <hr>
+    <br><br>
+    <p class="info">Nombre del Usuario: <span id="nombre"></span></p>
+    <p class="info">Pais del Usuario: <span id="pais"></span></p>
+    <p class="info">Email del Usuario: <span id="email"></span></p>
+    <br>
+    <p class="imagen">Imagen del Usuario</p>
+    <img width="150px" height="150px" id="imagen">
+</body>
+<script src="script.js"></script>
+</html>

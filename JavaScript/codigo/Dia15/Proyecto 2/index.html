@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD de Tareas</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body onload="cargarTareas()">
+    <h1>Sistema CRUD de Tareas</h1>
+    <h2>Consulta, Modifica y Agrega tareas</h2>
+    <table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Título</th>
+      <th>Estado</th>
+    </tr>
+  </thead>
+  <tbody id="tbody">
+ 
+  </tbody>
+</table>
+<br><hr><br>
+<h2>Consultar tarea específica</h2>
+<label for="idTarea">ID de Tarea</label>
+<input id="idTarea" type="number">
+<br><br>
+<button id="btnBuscar">Buscar Tarea</button><br><br>
+<p>ID de Tarea</p><textarea id="idText"></textarea><br>
+<p>Titulo de Tarea</p><textarea id="tituloText"></textarea><br>
+<p>Estado de Tarea</p><textarea id="estadoText"></textarea><br>
+<br>
+<button id="btnModificar">Modificar Tarea</button>
+<button id="btnEliminar">Eliminar Tarea</button>
+<input placeholder="Nuevo Titulo" id="nuevoTitulo">
+<input placeholder="Nuevo Estado" id="nuevoEstado">
+</body>
+<script src="script.js"></script>
+</html>

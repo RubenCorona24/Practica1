@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Información global</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body onload="cargarDatos()">
+    <div class="contenedor-principal">
+        <h1>Dashboard información global</h1>
+
+        <div class="seccion">
+            <h2>Cotizaciones del dólar</h2>
+            <div class="grid-cotizaciones">
+                <div class="card-moneda">
+                    <p>Peso Mexicano</p>
+                    <span id="spanMX"></span> MXN
+                </div>
+                <div class="card-moneda">
+                    <p>Euro</p>
+                    <span id="spanEUR"></span> EUR
+                </div>
+                <div class="card-moneda">
+                    <p>Peso Argentino</p>
+                    <span id="spanARS"></span> ARS
+                </div>
+            </div>
+        </div>
+
+        <div class="seccion">
+            <h2>Clima</h2>
+            <select id="selector">
+                <option value="Mexico">México</option>
+                <option value="Madrid">Madrid</option>
+                <option value="Argentina">Argentina</option>
+            </select>
+            <div style="margin-top: 1rem;">
+                <div class="campo">
+                    <span class="campo-label">Temperatura</span>
+                    <span class="campo-valor" id="gradosC"></span>
+                </div>
+                <div class="campo">
+                    <span class="campo-label">Humedad</span>
+                    <span class="campo-valor" id="humedad"></span>
+                </div>
+                <div class="campo">
+                    <span class="campo-label">Estado</span>
+                    <span class="campo-valor" id="estado"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="seccion">
+            <h2>Operador del sistema</h2>
+            <div class="operador">
+                <img id="imagen" src="loading.gif">
+                <div>
+                    <p class="operador-nombre">
+                        <span id="nombreOperador"></span>
+                        <span id="apellidoOperador"></span>
+                    </p>
+                    <p class="operador-rol">Operador del sistema</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+<script src="script.js"></script>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callbacks</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function avanzarfila(callback){
+        setTimeout(function(){
+            console.log("Tu turno ha llegado");
+            callback()
+        },5000)
+    }
+    function mujerTeLlama(){
+        console.log("Te presentas a tu turno")
+    }
+    console.log("Llegas a la fila");
+
+    avanzarfila(mujerTeLlama);
+    console.log("Te vas a comprar café")
+
+    //Segundo ejemplo de callback
+    function test(callback) {
+    setTimeout(function() {
+        callback()
+    }, 2000); 
+                    }
+
+function imprimir(mensaje) {
+    console.log(mensaje);
+}
+
+test("Hola mundo")
+</script>
+</html>

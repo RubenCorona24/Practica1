@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Día 15</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body onload="cargarDispositivos()">
+    <h1>Tabla de Productos de Amazon</h1>
+    <table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Modelo</th>
+      <th>Color</th>
+      <th>Almacenamiento</th>
+      <th>Procesador</th>
+    </tr>
+  </thead>
+  <tbody id="tabla">
+    
+  </tbody>
+</table>
+<br><br>
+<label for="id">ID del Dispositivo</label>
+<input type="number" id="id">
+<button id="btnBuscar">Buscar Dispositivo</button>
+<br><br>
+<textarea id="resultado" rows="8" readonly></textarea>
+<br><br>
+<hr>
+<br>
+<h2>Agregrar Registro</h2>
+<input type="text" id="inputMarca" placeholder="Marca">
+<input type="text" id="inputModelo" placeholder="Modelo">
+<input type="text" id="inputColor" placeholder="Color">
+<input type="text" id="inputAlmacenamiento" placeholder="Almacenamiento">
+<input type="text" id="inputProcesador" placeholder="Procesador">
+<button onclick="agregarDispositivo()">Agregar</button>
+<br><br>
+<hr>
+<br>
+<h2>Modificar Registro</h2>
+<label for="idDispositivo">ID de Dispositivo a Modificar</label>
+<input id="idDispositivo" type="number">
+<br><br>
+<input type="text" id="putMarca" placeholder="Marca">
+<input type="text" id="putModelo" placeholder="Modelo">
+<input type="text" id="putColor" placeholder="Color">
+<input type="text" id="putAlmacenamiento" placeholder="Almacenamiento">
+<input type="text" id="putProcesador" placeholder="Procesador">
+<button onclick="modificarInformacion()">Modificar Registro</button>
+<br><br>
+<hr>
+<h2>Eliminar Registro</h2>
+<label for="idEliminar">ID de Registro a Eliminar</label>
+<input id="idEliminar" type="number">
+<br><br>
+<button id="btnEliminar">Eliminar Registro</button>
+</body>
+<script src="script.js"></script>
+
+</html>

@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto 3</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body onload="cargarDatos()">
+    <h1>Sistema de Biblioteca</h1>
+    
+    <table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Título</th>
+      <th>Autor</th>
+      <th>Año</th>
+      <th>Disponible</th>
+    </tr>
+  </thead>
+  <tbody id="tabla">
+    
+  </tbody>
+</table>
+<br><hr><br>
+<h2>Buscar Libro</h2>
+<label for="idLibro">ID del Libro</label>
+<input type="number" id="idLibro" placeholder="ID de Libro">
+<br><br>
+<button id="btnBuscar">Buscar Libro</button>
+<br><br>
+<textarea id="tituloLibro"></textarea><br>
+<textarea id="autorLibro"></textarea><br>
+<textarea id="anioLibro"></textarea><br>
+<textarea id="disponibleLibro"></textarea>
+<br>
+<button id="btnPrestar">Prestar Libro</button>
+<button id="btnDevolver">Devolver Libro</button>
+<button id="btnConsultar">Consultar libros prestados/guardados</button>
+<br>
+<div id="contenedor"></div>
+<h2>Agregar un Libro al sistema</h2>
+<label for="tituloNuevo">Titulo del Libro</label>
+<input id="tituloNuevo" type="text">
+<label for="autorNuevo">Autor del Libro</label>
+<input id="autorNuevo" type="text">
+<label for="anioNuevo">Año del Libro</label>
+<input id="anioNuevo" type="text">
+<button id="btnAgregar">Agregar Libro al Sistema</button>
+<br><hr><br>
+<h2>Eliminar Libro del Sistema</h2>
+<label for="idEliminar">ID de Libro</label>
+<input id="idEliminar">
+<br><br>
+<button id="btnEliminar">Eliminar Libro del Sistema</button>
+</body>
+<script src="script.js"></script>
+</html>

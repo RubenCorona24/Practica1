@@ -1,0 +1,87 @@
+body{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: bisque;
+}
+h1,h2{
+    background-color: antiquewhite;
+    text-align: center;
+}
+table {
+    border-collapse: collapse; /* ← elimina espacio entre bordes */
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #f0f0f0;
+    font-weight: 500;
+}
+
+tr:hover {
+    background-color: #f9f9f9; /* ← resalta fila al pasar cursor */
+}
+nput {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    transition: 0.2s ease;
+    font-family: inherit;
+    margin: 4px 0;
+}
+
+input:focus {
+    border-color: #8b5e3c;
+    box-shadow: 0 0 5px rgba(139, 94, 60, 0.3);
+    background-color: #fffaf3;
+}
+
+/* =========================
+   BOTONES
+========================= */
+button {
+    padding: 8px 14px;
+    margin: 4px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: #d2a679;
+    color: white;
+    transition: 0.2s ease;
+}
+
+button:hover {
+    background-color: #b8865b;
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* =========================
+   CONTENEDORES (opcional pero mejora mucho)
+========================= */
+#contenedor {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #fff7ed;
+    border-radius: 8px;
+    border: 1px solid #e6d3b3;
+}
+
+/* =========================
+   MEJORA TABLA (solo visual suave)
+========================= */
+table {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}

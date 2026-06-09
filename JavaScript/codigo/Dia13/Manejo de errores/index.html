@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manejo de errores</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //Manejo de errores en programación asíncrona
+    function sumarNumeros(a,b,callback){
+        setTimeout(function(){
+            if (typeof a!="number" || typeof b != "number"){
+                return callback(new Error("Algun argumento no es número"));
+            }
+            callback(null,a+b)
+        },1000)
+    }
+    sumarNumeros(1,2,function(error,resultado){
+        if (error){
+            console.error(error)
+        }else{
+            console.log(resultado)
+        }
+    })
+
+    //con promesas
+    function sumarNumeros2(a,b){
+        return new Promise(function(resolve,reject){
+            setTimeout(function(){
+                if (typeof a!="number" || typeof b != "number"){
+                    reject(new Error("Ambos argumentos deben ser números")) 
+                }else{
+                    resolve(a+b)
+                }
+            },1000)
+        })
+    }
+    sumarNumeros2(1,2)
+    .then(resultado=>{
+        console.log(resultado)
+    })
+    .catch(error=>{
+        console.error(error)
+    })
+
+    //con async/await
+    async function sumarNumeros3(a,b){
+        if (typeof a!="number" || typeof b != "number"){
+            throw new Error("Alguno de los argumentos no es número")
+        }
+        return a+b
+    }
+    async function manejarErrores() {
+        try{
+            let res = await sumarNumeros3(1,2);
+            console.log(res)
+        }catch(error){
+            console.error(error.message);
+        }
+    }
+
+    //otro ejemplo con async/await
+    async function tablaDelCinco(numero) {
+    if(numero === 0) {
+        throw new Error("El numero no debe ser 0")
+    }
+    else {
+        return 5*numero;
+    }
+}
+
+async function manejarErrores() {
+    try{
+        let res = await tablaDelCinco(2);
+        console.log(res);
+    }catch(error){
+        console.error(error)
+    }
+}
+</script>
+</html>
