@@ -1,27 +1,44 @@
+import { useState } from "react"
+import { useQuery } from "@tanstack/react-query"
+
 import {
     Filter,
     Heart,
-    ChevronLeft,
-    ChevronRight,
-    MoreHorizontal,
 } from "lucide-react"
-import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { CustomJombotron } from "@/components/custom/CustomJombotron"
 import { HeroStats } from "@/heroes/components/HeroStats"
 import { HeroGrid } from "@/heroes/components/HeroGrid"
-import { useState } from "react"
+
 import { CustomPagination } from "@/components/custom/CustomPagination"
+import { CustomBreadcrumbs } from "@/components/custom/CustomBreadcrumbs"
+import { getHeroesByPage } from "@/heroes/actions/get-heroes-by-page.action"
+
 
 type Active = 'all' | 'favorites' | 'heroes' | 'villains'
 export const HomePage = () => {
     const [activeTag, setActiveTag] = useState<Active>('all')
+    const { data: heroesResponse } = useQuery({
+        queryKey: ['heroes'],
+        queryFn: () => getHeroesByPage(),
+        staleTime: 1000 * 60 * 5 //5 minutos
+    })
+    console.log({ heroesResponse })
+    //usamos useEffect para la petición http
+    //useEffect(() => {
+    //    getHeroesByPage()
+    //        .then()
+    //}, [])
     return (
         <>
             <>
                 {/* Header */}
                 <CustomJombotron title="Superhero Universe" description="Discover and manage superheroes and villains" />
+                <CustomBreadcrumbs pageName="Super heroes" breadcrumbs={[{ label: "Superheroe", to: '/' },
+                { label: "Superheroe 2", to: "/" },
+                { label: "Superheroe 3", to: '/' }
+                ]} />
                 {/* Stats Dashboard */}
                 <HeroStats />
 
