@@ -1,4 +1,3 @@
-import { useMemo } from "react"
 
 import {
     Filter,
@@ -12,26 +11,17 @@ import { HeroGrid } from "@/heroes/components/HeroGrid"
 
 import { CustomPagination } from "@/components/custom/CustomPagination"
 import { CustomBreadcrumbs } from "@/components/custom/CustomBreadcrumbs"
-import { useSearchParams } from "react-router"
 import { useHeroSummary } from "@/heroes/hooks/useHeroSummary"
 import { useHeroPaginated } from "@/heroes/hooks/useHeroPaginated"
+import { useHomePage } from "@/heroes/hooks/useHomePage"
 
 
 export const HomePage = () => {
-    const [searchParams, setSearchParams] = useSearchParams()
-    console.log(searchParams.get("page"))
-
-    const activeTab = searchParams.get("tab") ?? 'all';
-    const page = searchParams.get("page") ?? '1';
-    const limit = searchParams.get("limit") ?? '6';
-
-    const selectedTab = useMemo(() => {
-        const validTabs = ['all', 'favorites', 'heroes', 'villains']
-        return validTabs.includes(activeTab) ? activeTab : 'all'
-    }, [activeTab])
-
+    const { page,
+        limit,
+        selectedTab, category, setSearchParams } = useHomePage()
     //const [activeTag, setActiveTag] = useState<Active>('all')
-    const { data: heroesResponse } = useHeroPaginated(limit, page)
+    const { data: heroesResponse } = useHeroPaginated(limit, page, category)
 
     const { data: summary } = useHeroSummary();
     console.log({ heroesResponse })
@@ -56,6 +46,8 @@ export const HomePage = () => {
                     <TabsList className="grid w-full grid-cols-4">
                         <TabsTrigger value="all" onClick={() => setSearchParams((prev) => {
                             prev.set('tab', 'all')
+                            prev.set('category', 'all')
+                            prev.set('page', '1') //reseteamos a la página 1
                             return prev;
                         })}>All Characters ({summary?.totalHeroes})</TabsTrigger>
                         <TabsTrigger value="favorites" className="flex items-center gap-2"
@@ -68,10 +60,14 @@ export const HomePage = () => {
                         </TabsTrigger>
                         <TabsTrigger value="heroes" onClick={() => setSearchParams((prev) => {
                             prev.set('tab', 'heroes')
+                            prev.set('category', 'hero')
+                            prev.set('page', '1')
                             return prev;
                         })}>Heroes ({summary?.heroCount})</TabsTrigger>
                         <TabsTrigger value="villains" onClick={() => setSearchParams((prev) => {
                             prev.set('tab', 'villains')
+                            prev.set('category', 'villain')
+                            prev.set('page', '1')
                             return prev;
                         })}>Villains ({summary?.villainCount})</TabsTrigger>
                     </TabsList>
