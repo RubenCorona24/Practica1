@@ -3,8 +3,22 @@ import type { HeroesResponse } from "../interfaces/get-heroes.response";
 
 const BASE_URL = import.meta.env.VITE_API_URL
 //devuelve promesa tipo 'HeroesResponse' ya declarada en 'interfaces/get-heroes.response.ts'
-export const getHeroesByPage = async (): Promise<HeroesResponse> => {
-    const { data } = await heroAPI.get<HeroesResponse>('/')
+export const getHeroesByPage = async (
+    page: number,
+    limit: number = 6
+): Promise<HeroesResponse> => {
+    if (isNaN(page)) {
+        page = 1
+    }
+    if (isNaN(limit)) {
+        limit = 6
+    }
+    const { data } = await heroAPI.get<HeroesResponse>('/', {
+        params: {
+            limit: limit,
+            offset: (page - 1) * limit
+        }
+    })
     const heroes = data.heroes.map(hero => ({
         ...hero,
         image: `${BASE_URL}/images/${hero.image}` //url para ver la imagen

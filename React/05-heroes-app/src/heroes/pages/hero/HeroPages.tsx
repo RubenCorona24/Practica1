@@ -1,7 +1,10 @@
 import { CustomBreadcrumbs } from '@/components/custom/CustomBreadcrumbs'
 import React from 'react'
+import { useParams } from 'react-router'
 
 export const HeroPages = () => {
+    const { idSlug = '' } = useParams()
+    console.log({ idSlug })
     return (
         <div>
             <h1>HeroPage</h1>
