@@ -5,11 +5,15 @@ import type { MovieSearchResult } from "../interfaces/movie-search.interface"
 //función para extraer una lista de películas
 export const getMoviesAction = async (): Promise<MovieSearchResult[]> => {
     const { data } = await movieAPI.get<MoviesResponse>("", { params: { s: 'love' } })
-    return data.Search.map(movie => ({
+    const result = data.Search.map(movie => ({
         id: movie.imdbID,
         title: movie.Title,
         poster: movie.Poster,
         year: Number(movie.Year),
 
     }))
+    console.log('movies transformados:', result)
+    console.log('algún id undefined?', result.some(m => m.id === undefined))
+
+    return result
 }

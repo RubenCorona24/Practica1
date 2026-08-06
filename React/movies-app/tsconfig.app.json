@@ -30,7 +30,6 @@
     }
   },
   "include": [
-    "src",
-    "@/components/ui/lib"
+    "src"
   ]
 }

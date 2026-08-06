@@ -18,7 +18,7 @@ export const appRouter = createBrowserRouter([
             element: <SearchPage />
         },
         {
-            path: "/movie",
+            path: "/movie/:id",
             element: <MoviePage />
         },]
     }
