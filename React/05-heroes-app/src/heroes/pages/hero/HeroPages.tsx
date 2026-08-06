@@ -1,5 +1,4 @@
 import { CustomBreadcrumbs } from '@/components/custom/CustomBreadcrumbs'
-import React from 'react'
 import { useParams } from 'react-router'
 
 export const HeroPages = () => {
