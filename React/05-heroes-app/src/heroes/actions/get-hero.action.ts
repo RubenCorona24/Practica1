@@ -8,6 +8,6 @@ export const getHeroAction = async (idSlug: string) => { //recibimos nombre tipo
     const { data } = await heroAPI.get<Hero>(`/${idSlug}`)
     return {
         ...data,
-        image: `${BASE_URL}/images/${data.image}`
+        image: `${BASE_URL}`
     }
 }

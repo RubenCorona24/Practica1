@@ -3,11 +3,16 @@ import { Badge } from "@/components/ui/badge"
 import { Heart, Users, Zap } from "lucide-react"
 import { HeroStatCard } from "./HeroStatCard"
 import { useHeroSummary } from "../hooks/useHeroSummary"
+import { use } from "react"
+import { FavoriteHeroContext } from "../context/FavoriteHeroContext"
 
 export const HeroStats = () => {
     //peticion http a la api 
     const { data } = useHeroSummary()
-
+    const { favoriteCount } = use(FavoriteHeroContext)
+    if (!data) {
+        return <p>Loading...</p>
+    }
     return (
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
 
@@ -26,8 +31,8 @@ export const HeroStats = () => {
 
             <HeroStatCard title="Favoritos" icon={<Heart className="h-4 w-4 text-muted-foreground" />}>
                 {/*TODO: tenemos que calcular el porcentaje*/}
-                <div className="text-2xl font-bold text-red-600">3</div>
-                <p className="text-xs text-muted-foreground">18.8% of total</p>
+                <div className="text-2xl font-bold text-red-600" data-testid="favorite-count">{favoriteCount}</div>
+                <p className="text-xs text-muted-foreground" data-testid="favorite-percentage">{((favoriteCount / data.totalHeroes) * 100).toFixed(2)}% of total</p>
             </HeroStatCard>
 
             <HeroStatCard title="Más fuerte" icon={<Zap className="h-4 w-4 text-muted-foreground" />}>
