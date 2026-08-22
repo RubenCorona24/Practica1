@@ -7,7 +7,7 @@ import { getSummaryAction } from "../../actions/get-summary.action";
 import type { SummaryInformationResponse } from "../../interfaces/summary-information.response";
 
 //crear un mock de mi acción
-vi.mock('../actions/get-summary.action', () => ({
+vi.mock('../../actions/get-summary.action', () => ({
     getSummaryAction: vi.fn() //función ficticia
 })) //path de nuestra acción
 

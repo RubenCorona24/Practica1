@@ -1,12 +1,12 @@
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
-import { Button } from "@base-ui/react"
 import { Heart, Eye, Zap, Brain, Gauge, Shield } from "lucide-react"
 import type { Hero } from "../interfaces/hero.interface"
 import { useNavigate } from "react-router"
 import { useContext } from "react"
 import { FavoriteHeroContext } from "../context/FavoriteHeroContext"
+import { Button } from "@/components/ui/button"
 
 interface Props { //recibimos el hero 
     hero: Hero

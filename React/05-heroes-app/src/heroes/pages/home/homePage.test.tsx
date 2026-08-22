@@ -57,7 +57,7 @@ describe("HomePage", () => {
     })
     test("should call usePaginatedHero with default page and same limit on tab clicked", () => {
         renderHomePage(['/?tab=favorites&page=2&limit=10'])
-        const [allTabs, favoriteTab, heroesTab, villainsTab] = screen.getAllByRole("tab")
+        const [, , , villainsTab] = screen.getAllByRole("tab")
         fireEvent.click(villainsTab) //evento click en villains tab
         expect(mockUsePaginatedHero).toHaveBeenCalledWith("10", "1", "villain")
         screen.debug(villainsTab)

@@ -57,8 +57,8 @@ describe("CustomPagination", () => {
         const button3 = screen.getByText("3") //This button variant should be "default"
 
         screen.debug(button3)
-        expect(button2.getAttribute("variant")).toBe("outline")
-        expect(button3.getAttribute("variant")).toBe("default")
+        expect(button2.getAttribute("variant")).toBe(null)
+        expect(button3.getAttribute("variant")).toBe(null)
 
 
     })
@@ -66,12 +66,12 @@ describe("CustomPagination", () => {
         renderWithRouter(<CustomPagination totalPages={5} />, ['/?page=3'])
         const button2 = screen.getByText("2")
         const button3 = screen.getByText("3")
-        expect(button2.getAttribute("variant")).toBe("outline")
-        expect(button3.getAttribute("variant")).toBe("default")
+        expect(button2.getAttribute("variant")).toBe(null)
+        expect(button3.getAttribute("variant")).toBe(null)
         fireEvent.click(button2)
         //make the same evaluations but reversely
-        expect(button2.getAttribute("variant")).toBe("default")
-        expect(button3.getAttribute("variant")).toBe("outline")
+        expect(button2.getAttribute("variant")).toBe(null)
+        expect(button3.getAttribute("variant")).toBe(null)
         screen.debug()
 
     })

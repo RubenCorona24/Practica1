@@ -4,7 +4,7 @@ import { HeroStats } from "../HeroStats";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useHeroSummary } from "@/heroes/hooks/useHeroSummary";
 import type { SummaryInformationResponse } from "@/heroes/interfaces/summary-information.response";
-import { FavoriteHeroContext, FavoriteHeroProvider } from "@/heroes/context/FavoriteHeroContext";
+import { FavoriteHeroProvider } from "@/heroes/context/FavoriteHeroContext";
 
 vi.mock("@/heroes/hooks/useHeroSummary")
 const mockHero = {
@@ -122,13 +122,13 @@ const renderHeroStats = (mockData?: Partial<SummaryInformationResponse>) => {
 
 describe("HeroStats", () => {
     test("should render component with default values", () => {
-        const { container } = renderHeroStats()
+        renderHeroStats()
         expect(screen.getByText("Loading...")).toBeDefined()
         screen.debug()
 
     })
     test("should render HeroStats with mock information", () => {
-        const { container } = renderHeroStats(mockSummaryData)
+        renderHeroStats(mockSummaryData)
         expect(screen.getByText("Total de personajes")).toBeDefined()
         expect(screen.getByText("Favoritos")).toBeDefined()
         screen.debug()

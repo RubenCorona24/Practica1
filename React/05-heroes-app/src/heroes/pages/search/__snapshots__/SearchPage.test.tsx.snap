@@ -1,0 +1,149 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SearchPage > should call search action with name parameter 1`] = `
+<div>
+  <div
+    class="text-center mb-8"
+  >
+    <h1
+      class="text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4"
+    >
+      Search Your Superhero
+    </h1>
+    <p
+      class="text-gray-600 text-lg"
+    >
+      Discover and explore your favorite superheroes
+    </p>
+  </div>
+  <div
+    data-testid="custom-breadcrumbs"
+  >
+    CustomBreadcrumbs
+  </div>
+  <div
+    data-testid="hero-stats"
+  >
+    Hero Stats
+  </div>
+  <div
+    data-testid="search-controls"
+  >
+    SearchControls 
+  </div>
+  <div
+    data-testid="hero-grid"
+  />
+</div>
+`;
+
+exports[`SearchPage > should call search action with strength and name parameters 1`] = `
+<div>
+  <div
+    class="text-center mb-8"
+  >
+    <h1
+      class="text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4"
+    >
+      Search Your Superhero
+    </h1>
+    <p
+      class="text-gray-600 text-lg"
+    >
+      Discover and explore your favorite superheroes
+    </p>
+  </div>
+  <div
+    data-testid="custom-breadcrumbs"
+  >
+    CustomBreadcrumbs
+  </div>
+  <div
+    data-testid="hero-stats"
+  >
+    Hero Stats
+  </div>
+  <div
+    data-testid="search-controls"
+  >
+    SearchControls 
+  </div>
+  <div
+    data-testid="hero-grid"
+  />
+</div>
+`;
+
+exports[`SearchPage > should call search action with strength parameter 1`] = `
+<div>
+  <div
+    class="text-center mb-8"
+  >
+    <h1
+      class="text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4"
+    >
+      Search Your Superhero
+    </h1>
+    <p
+      class="text-gray-600 text-lg"
+    >
+      Discover and explore your favorite superheroes
+    </p>
+  </div>
+  <div
+    data-testid="custom-breadcrumbs"
+  >
+    CustomBreadcrumbs
+  </div>
+  <div
+    data-testid="hero-stats"
+  >
+    Hero Stats
+  </div>
+  <div
+    data-testid="search-controls"
+  >
+    SearchControls 
+  </div>
+  <div
+    data-testid="hero-grid"
+  />
+</div>
+`;
+
+exports[`SearchPage > should render SearchPage with default values 1`] = `
+<div>
+  <div
+    class="text-center mb-8"
+  >
+    <h1
+      class="text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4"
+    >
+      Search Your Superhero
+    </h1>
+    <p
+      class="text-gray-600 text-lg"
+    >
+      Discover and explore your favorite superheroes
+    </p>
+  </div>
+  <div
+    data-testid="custom-breadcrumbs"
+  >
+    CustomBreadcrumbs
+  </div>
+  <div
+    data-testid="hero-stats"
+  >
+    Hero Stats
+  </div>
+  <div
+    data-testid="search-controls"
+  >
+    SearchControls 
+  </div>
+  <div
+    data-testid="hero-grid"
+  />
+</div>
+`;

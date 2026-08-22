@@ -1,6 +1,6 @@
-import { Button } from '@base-ui/react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { useSearchParams } from 'react-router';
+import { Button } from '../ui/button';
 
 interface Props {
     totalPages: number;

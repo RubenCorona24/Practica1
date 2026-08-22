@@ -4,10 +4,11 @@ import { HeroesLayout } from "@/heroes/layouts/HeroesLayout";
 import { SuperheroProfile } from "@/heroes/pages/hero/HeroPage";
 import { HomePage } from "@/heroes/pages/home/HomePage";
 import { lazy } from "react";
-import { createBrowserRouter } from "react-router";
+import { createHashRouter } from "react-router";
 
 const SearchPage = lazy(() => import("@/heroes/pages/search/SearchPage"))
-export const appRouter = createBrowserRouter([
+//export const appRouter = createBrowserRouter([
+export const appRouter = createHashRouter([
     {
         path: '/',
         element: <HeroesLayout />,
