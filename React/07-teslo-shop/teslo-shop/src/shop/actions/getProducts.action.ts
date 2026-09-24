@@ -6,14 +6,19 @@ import type { ProductsResponse } from "@/interfaces/products.response"
 interface Options {
     limit?: number | string
     offset?: number
+    gender?: string
+    sizes?: string
+    minPrice?: number
+    maxPrice?: number
+    q?: string
 }
 
 //acción asíncrona a nuestro backend
 export const getProductsAction = async (options: Options): Promise<ProductsResponse> => {
-    const { limit, offset } = options
+    const { limit, offset, gender, sizes, minPrice, maxPrice, q } = options
     const { data } = await tesloApi.get<ProductsResponse>('/products', {
         params: {
-            limit, offset
+            limit, offset, gender, sizes, minPrice, maxPrice, q
         }
     }) //devuelve un ProductsResponse
     console.log(data)

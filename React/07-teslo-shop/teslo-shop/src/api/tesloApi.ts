@@ -7,5 +7,13 @@ const tesloApi = axios.create({
 
 })
 //TODO: Interceptores
+tesloApi.interceptors.request.use((config) => {
 
+    const token = localStorage.getItem("token")
+    if (token) {
+        //añadir token a los headers
+        config.headers.Authorization = `Bearer ${token}`
+    }
+    return config; //retornamos la configuración
+})
 export { tesloApi }

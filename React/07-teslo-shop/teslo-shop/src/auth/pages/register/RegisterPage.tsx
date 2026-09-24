@@ -3,14 +3,37 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { CustomLogo } from "@/components/custom/CustomLogo"
-import { Link } from "react-router"
+import { Link, useNavigate } from "react-router"
+import { useAuthStore } from "@/auth/store/auth.store"
+import { toast } from "sonner"
+import { type FormEvent } from "react"
 
 export const RegisterPage = () => {
+    const navigate = useNavigate() //usamos el navegador de react router
+    const { register } = useAuthStore() //desestructuramos información del gestor de estado
+
+    //manejador de formulario
+    const handleRegister = async (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault(); //evitar la propagación por defecto
+
+        //tomar datos
+        const formData = new FormData(event.target as HTMLFormElement);
+        const email = formData.get("email") as string
+        const password = formData.get("password") as string
+        const fullName = formData.get("fullName") as string
+        console.log({ email, password })
+        const isSuccess = await register(email, password, fullName) //valor booleano
+        if (isSuccess) {
+            navigate("/") //navega hacia el home
+        }
+        toast.error("Error con la información del usuario")
+
+    }
     return (
         <div className="flex flex-col gap-6">
             <Card className="overflow-hidden p-0">
                 <CardContent className="grid p-0 md:grid-cols-2">
-                    <form className="p-6 md:p-8">
+                    <form className="p-6 md:p-8" onSubmit={handleRegister}>
                         <div className="flex flex-col gap-6">
                             <div className="flex flex-col items-center text-center">
                                 <CustomLogo />
