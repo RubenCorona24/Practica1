@@ -10,7 +10,7 @@ import { DashboardPage } from "./admin/pages/dashboard/DashboardPage";
 import { AdminProductsPage } from "./admin/products/AdminProductsPage";
 import { AdminProductPage } from "./admin/pages/product/AdminProductPage";
 import { lazy } from "react";
-import { AdminRoute, AuthenticatedRoute, NotAuthenticatedRoute } from "./components/routes/ProtectedRoutes";
+import { AdminRoute, NotAuthenticatedRoute } from "./components/routes/ProtectedRoutes";
 
 //create AuthLayout LazyLoad
 const AuthLayout = lazy(() => import('./auth/layouts/AuthLayout'))

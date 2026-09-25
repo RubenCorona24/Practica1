@@ -17,14 +17,15 @@ export const RegisterPage = () => {
         event.preventDefault(); //evitar la propagación por defecto
 
         //tomar datos
-        const formData = new FormData(event.target as HTMLFormElement);
+        const formData = new FormData(event.currentTarget as HTMLFormElement);
         const email = formData.get("email") as string
         const password = formData.get("password") as string
         const fullName = formData.get("fullName") as string
-        console.log({ email, password })
+        console.log({ email, password, fullName })
         const isSuccess = await register(email, password, fullName) //valor booleano
         if (isSuccess) {
             navigate("/") //navega hacia el home
+            return
         }
         toast.error("Error con la información del usuario")
 
@@ -41,18 +42,18 @@ export const RegisterPage = () => {
                             </div>
                             <div className="grid gap-2">
                                 <Label htmlFor="email">Nombre</Label>
-                                <Input id="full-name" type="text" placeholder="Nombre del usuario" required />
+                                <Input id="full-name" name="fullName" type="text" placeholder="Nombre del usuario" required />
                             </div>
                             <div className="grid gap-2">
                                 <Label htmlFor="email">Email</Label>
-                                <Input id="email" type="email" placeholder="m@example.com" required />
+                                <Input id="email" name="email" type="email" placeholder="m@example.com" required />
                             </div>
                             <div className="grid gap-2">
                                 <div className="flex items-center">
                                     <Label htmlFor="password">Contraseña</Label>
 
                                 </div>
-                                <Input id="password" type="password" required placeholder="Contraseña" />
+                                <Input id="password" name="password" type="password" required placeholder="Contraseña" />
                             </div>
                             <Button type="submit" className="w-full">
                                 Crear cuenta

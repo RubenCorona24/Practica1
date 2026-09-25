@@ -4,8 +4,12 @@ import { Link } from "react-router"
 import { CustomPagination } from "@/components/custom/CustomPagination"
 import { Button } from "@base-ui/react/button"
 import { PlusIcon } from "lucide-react"
+import { useProducts } from "@/shop/hooks/useProducts"
 
 export const AdminProductsPage = () => {
+    //consumir el hook
+    const { data } = useProducts()
+
     return (
         <>
             <div className="flex justify-between items-center">
@@ -54,7 +58,7 @@ export const AdminProductsPage = () => {
                 </TableBody>
             </Table>
 
-            <CustomPagination totalPages={5} />
+            <CustomPagination totalPages={data?.pages ?? 0} />
         </>
     )
 }
