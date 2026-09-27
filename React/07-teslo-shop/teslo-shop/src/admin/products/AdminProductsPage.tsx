@@ -41,20 +41,28 @@ export const AdminProductsPage = () => {
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    <TableRow>
-                        <TableCell className="font-medium">1</TableCell>
-                        <TableCell>
-                            <img src="https://placehold.co/250x250" alt="producto " className="w-20 h-20 object-cover rounded-md" />
-                        </TableCell>
-                        <TableCell>Producto</TableCell>
-                        <TableCell>$250.00</TableCell>
-                        <TableCell>Categoría 1</TableCell>
-                        <TableCell>100 stock</TableCell>
-                        <TableCell>XS, S, L</TableCell>
-                        <TableCell className="text-right">
-                            <Link to={"/admin/products/t-shirt-teslo"}>Editar</Link>
-                        </TableCell>
-                    </TableRow>
+                    {
+                        data?.products.map(p => (
+                            <TableRow key={p.id}>
+                                <TableCell className="font-medium">1</TableCell>
+                                <TableCell>
+                                    <img src={p.images[0]} alt="producto " className="w-20 h-20 object-cover rounded-md" />
+                                </TableCell>
+                                <TableCell>
+                                    <Link to={`/admin/products/${p.id}`}
+                                        className="hover:text-blue-500 underline">{p.title}</Link>
+                                </TableCell>
+                                <TableCell>${p.price}</TableCell>
+                                <TableCell>{p.gender}</TableCell>
+                                <TableCell>{p.stock} stock</TableCell>
+                                <TableCell>{p.sizes}</TableCell>
+                                <TableCell className="text-right">
+                                    <Link to={`/admin/products/${p.id}`}>Editar</Link>
+                                </TableCell>
+                            </TableRow>
+                        ))
+                    }
+
                 </TableBody>
             </Table>
 
