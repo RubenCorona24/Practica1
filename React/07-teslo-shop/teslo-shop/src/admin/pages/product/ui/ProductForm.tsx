@@ -13,10 +13,12 @@ interface Props {
     title: string,
     subTitle: string,
     product: Product,
+    //Methods
+    onSubmit: (productLike: Partial<Product>) => Promise<void>; //promesa que no regresa nada
 
 }
 const availableSizes: Size[] = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
-export const ProductForm = ({ product, subTitle, title }: Props) => {
+export const ProductForm = ({ product, subTitle, title, onSubmit }: Props) => {
     console.log({ product })
     const [dragActive, setDragActive] = useState(false);
 
@@ -105,9 +107,7 @@ export const ProductForm = ({ product, subTitle, title }: Props) => {
         console.log(files);
     };
     //TODO: remover en un futuro
-    const onSubmit = (productLike: Product) => {
-        console.log("onSubmitted", productLike)
-    }
+
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className="flex justify-between items-center">

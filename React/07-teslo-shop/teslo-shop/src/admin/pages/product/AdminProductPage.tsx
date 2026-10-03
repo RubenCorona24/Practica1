@@ -4,25 +4,16 @@ import { useNavigate, useParams } from 'react-router';
 import { useProduct } from '@/admin/hooks/useProduct';
 import { CustomFullScreenLoading } from '@/components/custom/CustomFullScreenLoading';
 import { ProductForm } from './ui/ProductForm';
+import type { Product } from '@/interfaces/product.interface';
+import { toast } from 'sonner';
+import { sleep } from '@/lib/sleep';
 
-interface Product {
-    id: string;
-    title: string;
-    price: number;
-    description: string;
-    slug: string;
-    stock: number;
-    sizes: string[];
-    gender: string;
-    tags: string[];
-    images: string[];
-}
+
 
 export const AdminProductPage = () => {
     const { id } = useParams(); //extraer id de parámetros
-
     const navigate = useNavigate()
-    const { isLoading, isError, data: product } = useProduct(id ?? '') //consumir customHook
+    const { isLoading, isError, data: product, mutation } = useProduct(id ?? '') //consumir customHook
     console.log({ isLoading, product })
 
     const title = id === 'new' ? 'Nuevo producto' : 'Editar producto';
@@ -30,7 +21,20 @@ export const AdminProductPage = () => {
         id === 'new'
             ? 'Aquí puedes crear un nuevo producto.'
             : 'Aquí puedes editar el producto.';
+    //TODO: Función para actualizar producto 
+    const handleSubmit = async (productLike: Partial<Product>) => {
+        await mutation.mutateAsync(productLike, {
+            onSuccess: (data) => {
 
+                toast.success("Producto actualizado correctamente")
+                navigate(`/admin/products/${data.id}`)
+            },
+            onError: (error) => {
+                console.log("Error")
+                toast.error(`Error: ${error}`)
+            }
+        })
+    }
 
     //redirecciones
     if (isError) {
@@ -40,7 +44,11 @@ export const AdminProductPage = () => {
     if (!product) {
         navigate("/admin/products")
     }
-    return <ProductForm title={title} subTitle={subtitle} product={product} />
+    return <ProductForm title={title}
+        subTitle={subtitle}
+        product={product}
+        onSubmit={handleSubmit}
+    />
 
 
 
