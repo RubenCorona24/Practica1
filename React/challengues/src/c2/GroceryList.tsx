@@ -1,6 +1,6 @@
 
 import { Button } from "../components/ui/button"
-import { defaultProducts } from "./mockdata"
+import { defaultProducts } from "./interface"
 import { Input } from "../components/ui/input"
 import { useRef, useState } from "react"
 

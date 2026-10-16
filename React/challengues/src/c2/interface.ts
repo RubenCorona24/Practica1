@@ -18,3 +18,6 @@ export const defaultMockProducts: Product[] = [
     { id: 4, name: "Yogur", purchased: false },
     { id: 5, name: "Frijoles", purchased: false },
 ]
+
+//tipo de filtro
+export type Filter = "all" | "pending" | "completed"

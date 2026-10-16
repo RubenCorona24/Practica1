@@ -1,15 +1,16 @@
 import { Input } from "../components/ui/input"
 import React, { useRef, useState } from 'react'
-import { defaultMockProducts } from './mockdata'
+import { defaultMockProducts, type Filter } from './interface'
 import { Button } from "../components/ui/button"
 
-import { type Product } from './mockdata'
+import { type Product } from './interface'
 
 
 
 export const GroceryList2 = () => {
-    const [products, setProducts] = useState(defaultMockProducts)
     const inputRef = useRef<HTMLInputElement>(null)
+    const [products, setProducts] = useState(defaultMockProducts)
+    const [filter, setFilter] = useState<Filter>('all')
     const handleAddItem = () => {
         const value = inputRef.current?.value.trim()
         //Validar existencia de producto
@@ -45,6 +46,12 @@ export const GroceryList2 = () => {
     //Conteo de productos pendientes
     const pendingProducts = products.filter(p => p.purchased === false).length
 
+    //Filtro de productos
+    const filteredProducts = products.filter(p => {
+        if (filter === 'pending') return !p.purchased //retorna productos no comprados
+        if (filter === 'completed') return p.purchased //retorna producctos comprados
+        return true
+    })
 
     return (
         <div>
@@ -56,6 +63,64 @@ export const GroceryList2 = () => {
                 onKeyDown={handleKeyDown} />
             <br />
             <Button className={'cursor-pointer'} onClick={handleAddItem}>Agregar al carrito</Button>
+            {/*Contador de pendientes */}
+            <p>
+                {
+                    pendingProducts === 0 ? "Todo comprado!!" : `Productos Pendientes: ${pendingProducts}`
+                }
+            </p>
+
+
+            {/*Filtros*/}
+            <div style={{ display: 'flex', gap: '8px' }}>
+                <Button variant={filter === 'all' ? "default" : "outline"}
+                    size={'sm'}
+                    onClick={() => setFilter('all')}>
+                    Todos ({products.length})
+                </Button>
+                <Button variant={filter === 'pending' ? "default" : "outline"}
+                    size={'sm'}
+                    onClick={() => setFilter('pending')}>
+                    Pendientes ({products.filter(p => !p.purchased).length})
+                </Button>
+                <Button variant={filter === 'completed' ? "default" : "outline"}
+                    size={'sm'}
+                    onClick={() => setFilter('completed')}>
+                    Completados ({products.filter(p => p.purchased).length})
+                </Button>
+            </div>
+
+            {
+                filteredProducts.length === 0 ? (
+                    <p>Sin Productos para esta Categoría</p>) :
+                    (
+                        <ul>
+                            {
+                                filteredProducts.map(p => (
+                                    <li key={p.id}
+                                        style={{
+                                            display: 'flex',
+                                            gap: '8px',
+                                            alignItems: 'center',
+                                            // ✅ tachado si está comprado
+                                            textDecoration: p.purchased ? 'line-through' : 'none',
+                                            opacity: p.purchased ? 0.5 : 1
+                                        }}>
+                                        {p.name}
+                                        <Input type='checkbox' checked={p.purchased}
+                                            onChange={() => handleProductPurchased(p.id)} />
+                                        <Button
+                                            variant={'destructive'}
+                                            onClick={() => handleRemoveItem(p.id)}
+                                            className={'cursor-pointer'}>Eliminar</Button>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    )
+            }
+
+            <br />
             {
                 products.length === 0 ? (
                     <div>Sin Productos</div>
@@ -63,31 +128,7 @@ export const GroceryList2 = () => {
                     <div>Productos Totales: <span>{products.length}</span> </div>
                 )
             }
-            <ul>
-                {
-                    products.map(p => (
-                        <li key={p.id}
-                            style={{
-                                display: 'flex',
-                                gap: '8px',
-                                alignItems: 'center',
-                                // ✅ tachado si está comprado
-                                textDecoration: p.purchased ? 'line-through' : 'none',
-                                opacity: p.purchased ? 0.5 : 1
-                            }}>
-                            {p.name}
-                            <Input type='checkbox' checked={p.purchased}
-                                onChange={() => handleProductPurchased(p.id)} />
-                            <Button
-                                variant={'destructive'}
-                                onClick={() => handleRemoveItem(p.id)}
-                                className={'cursor-pointer'}>Eliminar</Button>
-                        </li>
-                    ))
-                }
-            </ul>
-            <br />
-            <div>Productos Pendientes: <span>{pendingProducts}</span></div>
+
         </div>
     )
 }
