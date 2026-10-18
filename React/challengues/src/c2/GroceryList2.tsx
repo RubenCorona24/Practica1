@@ -1,68 +1,47 @@
 import { Input } from "../components/ui/input"
-import React, { useRef, useState } from 'react'
-import { defaultMockProducts, type Filter } from './interface'
+import React, { useRef } from 'react'
 import { Button } from "../components/ui/button"
 
-import { type Product } from './interface'
+import { useGroceryList } from "./hook/useGroceryList"
 
 
 
 export const GroceryList2 = () => {
     const inputRef = useRef<HTMLInputElement>(null)
-    const [products, setProducts] = useState(defaultMockProducts)
-    const [filter, setFilter] = useState<Filter>('all')
-    const handleAddItem = () => {
-        const value = inputRef.current?.value.trim()
-        //Validar existencia de producto
-        if (!value) return;
-        //Evitar duplicados
-        if (products.some(p => p.name.toLowerCase() === value.toLowerCase())) return;
-        //Crear nuevo producto
-        const newProduct: Product = {
-            id: Date.now(),
-            name: value,
-            purchased: false
-        }
-        //Añadir nuevo producto a productos
-        setProducts([...products, newProduct])
-        //Resetear el input
-        inputRef.current!.value = ""
-    }
-    //Función de eliminar producto
-    const handleRemoveItem = (id: number) => {
-        //Filtrar para eliminar
-        const newProducts = products.filter(p => p.id !== id)
-        setProducts(newProducts)
-    }
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === "Enter") handleAddItem()
+        if (e.key === "Enter") handleAdd()
     }
-    //Función de setear el comprado
-    const handleProductPurchased = (id: number) => {
-        setProducts(prev => prev.map(p =>
-            p.id === id ? { ...p, purchased: !p.purchased } : p
-        ))
-    }
-    //Conteo de productos pendientes
-    const pendingProducts = products.filter(p => p.purchased === false).length
 
-    //Filtro de productos
-    const filteredProducts = products.filter(p => {
-        if (filter === 'pending') return !p.purchased //retorna productos no comprados
-        if (filter === 'completed') return p.purchased //retorna producctos comprados
-        return true
-    })
+    const {
+        products,
+        filter,
+        filteredProducts,
+        pendingProducts,
+        completedProducts,
+        handleAddItem,
+        handleRemoveItem,
+        handleProductPurchased,
+        setFilter
+    } = useGroceryList()
+    const handleAdd = () => {
+        const value = inputRef.current?.value
+        if (!value) return;
+        if (handleAddItem(value)) { //si devuelve true
+            inputRef.current!.value = ""; // Limpiar input
+        }
+
+    }
 
     return (
         <div>
-            <h1>Grocery List 2</h1>
+            <h1>Lista de Compras </h1>
             <Input
                 type="text"
                 placeholder="Nombre del Producto"
                 ref={inputRef}
                 onKeyDown={handleKeyDown} />
             <br />
-            <Button className={'cursor-pointer'} onClick={handleAddItem}>Agregar al carrito</Button>
+            <Button className={'cursor-pointer'} onClick={handleAdd}>Agregar al carrito</Button>
             {/*Contador de pendientes */}
             <p>
                 {
@@ -81,12 +60,12 @@ export const GroceryList2 = () => {
                 <Button variant={filter === 'pending' ? "default" : "outline"}
                     size={'sm'}
                     onClick={() => setFilter('pending')}>
-                    Pendientes ({products.filter(p => !p.purchased).length})
+                    Pendientes ({pendingProducts})
                 </Button>
                 <Button variant={filter === 'completed' ? "default" : "outline"}
                     size={'sm'}
                     onClick={() => setFilter('completed')}>
-                    Completados ({products.filter(p => p.purchased).length})
+                    Completados ({completedProducts})
                 </Button>
             </div>
 

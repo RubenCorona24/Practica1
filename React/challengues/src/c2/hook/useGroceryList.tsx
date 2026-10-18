@@ -8,7 +8,7 @@ export const useGroceryList = () => {
     const handleAddItem = (productName: string) => {
         const value = productName.trim()
         //Validar existencia de producto
-        if (!value) return;
+        if (!value) return false;
         //Evitar duplicados
         if (products.some(p => p.name.toLowerCase() === value.toLowerCase())) return;
         //Crear nuevo producto
@@ -19,7 +19,7 @@ export const useGroceryList = () => {
         }
         //Añadir nuevo producto a productos
         setProducts([...products, newProduct])
-        //Resetear el input
+        return true
     }
     const handleRemoveItem = (id: number) => {
         //Filtrar para eliminar
@@ -32,8 +32,8 @@ export const useGroceryList = () => {
         ))
     }
     //Conteo de productos pendientes
-    const pendingProducts = products.filter(p => p.purchased === false).length
-
+    const pendingProducts = products.filter(p => !p.purchased).length
+    const completedProducts = products.filter(p => p.purchased).length
     //Filtro de productos
     const filteredProducts = products.filter(p => {
         if (filter === 'pending') return !p.purchased //retorna productos no comprados
@@ -49,8 +49,10 @@ export const useGroceryList = () => {
         handleAddItem,
         handleRemoveItem,
         handleProductPurchased,
+        setFilter,
         //Datos calculados
         filteredProducts,
-        pendingProducts
+        pendingProducts,
+        completedProducts
     }
 }
