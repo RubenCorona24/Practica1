@@ -1,25 +1,29 @@
-import type { Project } from "@/interfaces/project";
+import type { Project, ProjectStatus } from "@/interfaces/project";
 import type { Task } from "@/interfaces/task";
-import { Code2, Command, Terminal, type LucideIcon } from "lucide-react";
+import { Code2, Command, Terminal } from "lucide-react";
 
 export const projects: Project[] = [
-    { id: '1', name: 'Devflow Web', description: 'Plataforma de gestión de proyectos', status: 'active' },
-    { id: '2', name: 'API Gateway', description: 'Servicios y autenticación REST', status: 'active' },
-    { id: '3', name: 'Design System', description: 'Biblioteca de componentes UI', status: 'active' },
+    { id: 'devflow-web', name: 'Devflow Web', description: 'Plataforma de gestión de proyectos', status: 'active' },
+    { id: 'api-gateway', name: 'API Gateway', description: 'Servicios y autenticación REST', status: 'active' },
+    { id: 'design-system', name: 'Design System', description: 'Biblioteca de componentes UI', status: 'active' },
 ];
 
-export const projectUI: Record<string, { tone: string; icon: LucideIcon }> = {
-    '1': { tone: '', icon: Code2 },
-    '2': { tone: 'blue', icon: Terminal },
-    '3': { tone: 'amber', icon: Command },
-};
+// Presentation details stay separate from the domain interfaces.
+export const projectAppearance = [
+    { projectId: 'devflow-web', tone: '', icon: Code2, initials: ['RC', 'AL', 'DM'] },
+    { projectId: 'api-gateway', tone: 'blue', icon: Terminal, initials: ['RC', 'DM'] },
+    { projectId: 'design-system', tone: 'amber', icon: Command, initials: ['AL', 'RC'] },
+];
+export const projectStatusLabels: Record<ProjectStatus, string> = { active: 'En progreso', completed: 'Completado', paused: 'Pausado' };
+export const priorityLabels: Record<TaskPriority, string> = { low: 'Baja', medium: 'Media', high: 'Alta' };
+export const formatDate = (date: string | null) => date ? new Intl.DateTimeFormat('es-MX', { day: 'numeric', month: 'short', timeZone: 'UTC' }).format(new Date(date)) : 'Sin fecha';
 
 export const initialTasks: Task[] = [
-    { id: '1', title: 'Implementar autenticación con JWT', projectId: '1', priority: 'high', date: 'Hoy', status: 'todo' },
-    { id: '2', title: 'Corregir estados del componente Button', projectId: '2', priority: 'medium', date: 'Hoy', status: 'todo' },
-    { id: '3', title: 'Crear vista de detalle del proyecto', projectId: '3', priority: 'high', date: '12 oct', status: 'todo' },
-    { id: '4', title: 'Documentar endpoints de usuarios', projectId: '4', priority: 'low', date: '13 oct', status: 'todo' },
-    { id: '5', title: 'Optimizar consultas del dashboard', projectId: '5', priority: 'medium', date: '14 oct', status: 'todo' },
+    { id: 'task-1', title: 'Implementar autenticación con JWT', projectId: 'api-gateway', priority: 'high', date: '2026-10-13', status: 'in-progress' },
+    { id: 'task-2', title: 'Corregir estados del componente Button', projectId: 'design-system', priority: 'medium', date: '2026-10-13', status: 'todo' },
+    { id: 'task-3', title: 'Crear vista de detalle del proyecto', projectId: 'devflow-web', priority: 'high', date: '2026-10-14', status: 'in-progress' },
+    { id: 'task-4', title: 'Documentar endpoints de usuarios', projectId: 'api-gateway', priority: 'low', date: null, status: 'todo' },
+    { id: 'task-5', title: 'Optimizar consultas del dashboard', projectId: 'devflow-web', priority: 'medium', date: '2026-10-12', status: 'done' },
 ];
 
 export const activity = [
