@@ -20,6 +20,7 @@ import { PageHeading } from '@/dashboard/components/PageHeading'
 import { StatsGrid } from '@/dashboard/components/StatsGrid'
 import { ProjectCard } from '@/dashboard/components/ProjectCard'
 import { ProjectsSection } from '@/dashboard/components/ProjectsSection'
+import { TaskRow } from '@/dashboard/components/TaskRow'
 
 /* -------------------------------------------------------------------------- */
 /*  Constantes de presentación                                                */
@@ -248,27 +249,11 @@ export function Dashboard() {
 
                             <div className="task-table">
                                 {visibleTasks.map(t => {
-                                    const isDone = t.status === 'done'
                                     return (
-                                        <div className={`task-row ${isDone ? 'done' : ''}`} key={t.id}>
-                                            <input
-                                                type="checkbox"
-                                                className="task-check"
-                                                checked={isDone}
-                                                aria-label={`Completar ${t.title}`}
-                                                onChange={() => toggleTask(t.id)}
-                                            />
-                                            <div>
-                                                <div className="task-name">{t.title}</div>
-                                                <div className="task-project">{getProjectName(t.projectId)}</div>
-                                            </div>
-                                            <span className={`badge ${PRIORITY_TONE[t.priority]}`}>
-                                                {PRIORITY_ARROW[t.priority]} {priorityLabels[t.priority]}
-                                            </span>
-                                            <span className="task-date text-[10px] text-muted-foreground">
-                                                {formatDate(t.date)}
-                                            </span>
-                                        </div>
+                                        <TaskRow key={t.id}
+                                            task={t}
+                                            projectName={t.title}
+                                            onToggle={toggleProject} />
                                     )
                                 })}
                                 {!visibleTasks.length && (

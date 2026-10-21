@@ -6,7 +6,7 @@ import { X } from "lucide-react";
 interface Props {
     selectedProject: Project,
     visibleProjects: Project[],
-    project: Project,
+    project: string,
     onSetProject: (id: string) => void
 }
 export const ProjectsSection = ({ project, selectedProject, visibleProjects, onSetProject }: Props) => {
