@@ -7,11 +7,13 @@ import './index.css'
 //import { GroceryList2 } from './c2/GroceryList2.tsx'
 import { ProductCard } from './reto3/ProductCard.tsx'
 import { defaultCards } from './reto3/mockData.ts'
+import { App } from './App.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     {/*<CounterApp initialValue={2} steps={5} />*/}
     {/*<GroceryList2 />*/}
-    <ProductCard cards={defaultCards} />
+    {/*<ProductCard cards={defaultCards} />*/}
+    <App />
   </StrictMode>,
 )

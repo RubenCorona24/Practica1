@@ -20,4 +20,4 @@ export const defaultMockProducts: Product[] = [
 ]
 
 //tipo de filtro
-export type Filter = "all" | "pending" | "completed"
+export type Filter = "all" | "pending" | "completed" | "in-progress"

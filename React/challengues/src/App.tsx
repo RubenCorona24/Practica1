@@ -1,8 +1,7 @@
+import { TaskController } from "./reto4/TasksController"
 
 export const App = () => {
     return (
-        <div>
-            Hello World
-        </div>
+        <TaskController />
     )
 }
