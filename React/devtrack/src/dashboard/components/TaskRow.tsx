@@ -1,13 +1,14 @@
 import type { Task } from "@/interfaces/task"
 import { formatDate, priorityLabels } from "@/pages/dashboard/data/mockdata"
 
+type Priority = Task["priority"]
 interface TaskRowProps {
     task: Task
     projectName: string
     onToggle: (taskId: string) => void
 }
-const PRIORITY_ARROW: Record<string, string> = { high: '↑', medium: '−', low: '↓' }
-const PRIORITY_TONE: Record<string, string> = { high: 'rose', medium: 'amber', low: 'blue' }
+const PRIORITY_ARROW: Record<Priority, string> = { high: '↑', medium: '−', low: '↓' }
+const PRIORITY_TONE: Record<Priority, string> = { high: 'rose', medium: 'amber', low: 'blue' }
 
 export const TaskRow = ({ task, projectName, onToggle }: TaskRowProps) => {
     const isDone = task.status === 'done'

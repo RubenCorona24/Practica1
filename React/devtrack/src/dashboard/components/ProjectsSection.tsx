@@ -4,7 +4,7 @@ import type { Project } from "@/interfaces/project";
 import { X } from "lucide-react";
 
 interface Props {
-    selectedProject: Project,
+    selectedProject: Project | undefined,
     visibleProjects: Project[],
     project: string,
     onSetProject: (id: string) => void

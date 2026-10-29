@@ -1,6 +1,8 @@
+import type { ActivityItem } from "@/interfaces/activity";
 import type { Project, ProjectStatus } from "@/interfaces/project";
 import type { Task } from "@/interfaces/task";
 import { Code2, Command, Terminal } from "lucide-react";
+
 
 export const projects: Project[] = [
     { id: 'devflow-web', name: 'Devflow Web', description: 'Plataforma de gestión de proyectos', status: 'active' },
@@ -26,7 +28,7 @@ export const initialTasks: Task[] = [
     { id: 'task-5', title: 'Optimizar consultas del dashboard', projectId: 'devflow-web', priority: 'medium', date: '2026-10-12', status: 'done' },
 ];
 
-export const activity = [
+export const activity: ActivityItem[] = [
     { name: 'RC', tone: '', text: <><strong>Tú</strong> completaste <strong>Configurar entorno de desarrollo</strong></>, project: 'Devflow Web', time: 'Hace 15 minutos' },
     { name: 'AL', tone: 'blue', text: <><strong>Ana López</strong> comentó en <strong>Componente de navegación</strong></>, project: 'Design System', time: 'Hace 42 minutos' },
     { name: 'DM', tone: 'amber', text: <><strong>Diego Martínez</strong> creó la tarea <strong>Agregar rate limiting</strong></>, project: 'API Gateway', time: 'Hace 1 hora' },

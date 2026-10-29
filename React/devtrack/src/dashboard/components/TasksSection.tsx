@@ -1,9 +1,10 @@
 import type { Task } from "@/interfaces/task"
 
+type TaskFilter = "Todas" | "Pendientes" | "Completadas"
 interface Props {
     tasks: Task[]
     filter: string
-    onSetFilter: (e: React.ChangeEvent<HTMLSelectElement, HTMLSelectElement>) => void
+    onSetFilter: (filter: TaskFilter) => void
 }
 export const TasksSection = ({ tasks, filter, onSetFilter }: Props) => {
     return (
@@ -13,7 +14,7 @@ export const TasksSection = ({ tasks, filter, onSetFilter }: Props) => {
                 aria-label="Filtrar tareas"
                 className="text-[11px] bg-transparent text-muted-foreground outline-none"
                 value={filter}
-                onChange={onSetFilter}
+                onChange={(e) => onSetFilter(e.target.value as TaskFilter)}
             >
                 <option>Todas</option>
                 <option>Pendientes</option>
