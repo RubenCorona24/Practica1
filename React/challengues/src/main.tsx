@@ -5,8 +5,8 @@ import './index.css'
 //import { CounterApp } from './C1/components/CounterApp.tsx'
 //import { GroceryList } from './c2/GroceryList.tsx'
 //import { GroceryList2 } from './c2/GroceryList2.tsx'
-import { ProductCard } from './reto3/ProductCard.tsx'
-import { defaultCards } from './reto3/mockData.ts'
+//import { ProductCard } from './reto3/ProductCard.tsx'
+//import { defaultCards } from './reto3/mockData.ts'
 import { App } from './App.tsx'
 
 createRoot(document.getElementById('root')!).render(

@@ -40,7 +40,7 @@ function Chip({ label, active, onClick }: { label: string; active?: boolean, onC
 
 export const TaskController = () => {
     const inputRef = useRef<HTMLInputElement>(null)
-    const [tasks, setTasks] = useState<Task[]>(mockTasks)
+    const [tasks] = useState<Task[]>(mockTasks)
     const [search, setSearch] = useState('')
     const [statusFilter, setStatusFilter] = useState<Filter>('all')
     const [priorityFilter, setPriorityFilter] = useState<Priority>('all')
