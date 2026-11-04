@@ -27,3 +27,13 @@ export interface Company {
     catchPhrase: string;
     bs: string;
 }
+
+//interfaz de formulario de usuario
+export interface UserFormInformation {
+    name: string
+    username: string
+    email: string
+    phone: string
+    website: string
+    city: string
+}
